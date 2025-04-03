@@ -159,7 +159,7 @@ body{
   margin: 0px;
 }
 progress::-webkit-progress-value {
-  background: #1dbf73;
+  background: #007bff;
   border-radius: 3px;
 }
 progress{

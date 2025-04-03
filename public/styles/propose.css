@@ -27,7 +27,7 @@
 }
 .details-lft h2{
     padding: 5px;
-    color: #1dbf73;
+    color: #007bff;
     margin: 3px;
 }
 .details-rgt{
@@ -44,7 +44,7 @@
     margin-left: 25px;
 }
 .details-rgt i{
-    color: #1dbf73;
+    color: #007bff;
     font-size: 16px;
     padding: 3px;
     margin: 3px;
@@ -93,7 +93,7 @@ select{
 
 button{
     padding: 15px;
-    background-color: #1dbf73;
+    background-color: #007bff;
     border: none;
     margin: 10px auto;
     max-width: 70vw;
