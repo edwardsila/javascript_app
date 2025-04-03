@@ -3,10 +3,10 @@
 @import url(./default.css);
 
 :root{
-    --green: #1dbf73;
-    --orange: #ffb71a;
-    --pink: #fe5858;
-    --greener:#73c59f;
+    --blue: #007bff;
+    --yellow: #ffcc00;
+    --red: #ff4d4d;
+    --greener:#007bff;
 }
 
 .client-content{
@@ -22,7 +22,7 @@
 }
 .browse-job{
     padding: 10px;
-    border: 2px solid var(--green);
+    border: 2px solid var(--blue);
     background-color: white;
     border-radius: 15px;
     margin: 5px;
@@ -46,12 +46,12 @@
 }
 .job-folder{
     font-size: 60px;
-    color: var(--green);
+    color: var(--blue);
     margin: 0 auto;
 }
 .job-post{
     padding: 10px;
-    border: 1px solid var(--green);
+    border: 1px solid var(--blue);
     border-radius: 5px;
 }
 .posted-jobs{
@@ -68,7 +68,7 @@
     margin: 5px auto;
 }
 .job-post-btn{
-    background-color: var(--green);
+    background-color: var(--blue);
     padding: 15px;
     border: none;
     color: white;
@@ -76,7 +76,7 @@
     cursor: pointer;
 }
 .c-tasks{
-    border: 1px solid var(--green);
+    border: 1px solid var(--blue);
     border-radius: 5px;
     padding: 25px;
     margin: 5px 10px;
@@ -90,7 +90,7 @@
     margin: 5px auto;
     display: flex;
     justify-content: space-around;
-    border-bottom: 1px solid var(--green);
+    border-bottom: 1px solid var(--blue);
 }
 .step-img{
     padding: 5px;
@@ -176,7 +176,7 @@ fieldset{
     padding: 15px 30px;
     border: none;
     border-radius: 8px;
-    background-color: var(--green);
+    background-color: var(--blue);
     margin: 5px;
     cursor: pointer;
   }

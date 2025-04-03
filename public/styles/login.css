@@ -3,9 +3,9 @@
 @import url(./default.css);
 
 :root{
-    --green: #1dbf73;
-    --orange: #ffb71a;
-    --pink: #fe5858;
+    --green: #007bff;
+    --orange: #ffcc00;
+    --pink: #ff4d4d;
 }
 .hidden{
     display: none !important;
@@ -39,7 +39,7 @@ i{
 
 form h3{
     text-align: center;
-    color: #1dbf73;
+    color: #007bff;
     padding: 5px;
     margin: 10px auto;
     font-size: 16px;
@@ -59,7 +59,7 @@ input[type="email"],input[type="password"]{
 
 input[type="submit"]{
     border: none;
-    background-color: #1dbf73;
+    background-color: #007bff;
     padding: 10px;
     width: 100%;
     border-radius: 5px;

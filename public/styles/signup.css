@@ -3,9 +3,9 @@
 @import url(./default.css);
 
 :root{
-    --green: #1dbf73;
-    --orange: #ffb71a;
-    --pink: #fe5858;
+    --green: #007bff;
+    --orange: #ffcc00;
+    --pink: #ff4d4d;
 }
 .hidden{
     display: none !important;

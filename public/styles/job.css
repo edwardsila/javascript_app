@@ -5,10 +5,10 @@
 
 }
 #job{
-    border-bottom: 1px solid var(--pink);
+    border-bottom: 1px solid var(--red);
 }
 #job > h1{
-    color: var(--green);
+    color: var(--blue);
     
 }
 .description{
@@ -19,14 +19,14 @@
 }
 
 .description h3{
-    color: var(--orange);
+    color: var(--yellow);
 }
 #header{
     display: grid;
     grid-template-columns: auto auto;
     gap: 1rem;
     align-items: center;
-    color: var(--green);
+    color: var(--blue);
 }
 #header img{
     cursor: pointer;
@@ -68,11 +68,11 @@
 }
 .essential .key{
     font-size: 50px;
-    color: var(--orange);
+    color: var(--yellow);
 }
 
 .essential .value{
-    color: var(--green);
+    color: var(--blue);
     font-weight: bold;
     font-size: .9rem;
 }
@@ -97,7 +97,7 @@
     width: fit-content;
     padding: 5px 10px;
     border-radius: 5px;
-    border: .5px solid var(--orange);
+    border: .5px solid var(--blue);
     margin: 5px;
 }
 
@@ -110,7 +110,7 @@
 .button button{
     padding: 5px 10px;
     border-radius: 5px;
-    background-color: var(--green);
+    background-color: var(--blue);
     color: white;
     font-weight: bold;
 

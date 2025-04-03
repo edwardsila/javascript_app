@@ -25,9 +25,9 @@
 }
 
 :root{
-    --green: #1dbf73;
-    --orange: #ffb71a;
-    --pink: #fe5858;
+    --blue: #007bff;
+    --yellow: #ffcc00;
+    --red: #ff4d4d;
 }
 
 *{
@@ -40,7 +40,7 @@
 }
 
 .wh-danger{
-    color: var(--pink);
+    color: var(--red);
 }
 body{
     background-color: whitesmoke;
@@ -49,7 +49,7 @@ nav h1, header h1, header h3, header h4{
     font-family: nunito;
 }
 nav h1{
-    color: var(--green);
+    color: var(--blue);
 }
 header p{
     font-family: quicksand;
@@ -108,7 +108,7 @@ header .key{
     font-size: x-large;
     display: block;
     width: 100%;
-    border-bottom: 1px dotted var(--green);
+    border-bottom: 1px dotted var(--blue);
 }
 .required{
     color: red;
@@ -135,10 +135,10 @@ header .key{
 }
 
 .topic-input button{
-    color: var(--green);
+    color: var(--blue);
     padding-right: 10px;
     height: fit-content;
-    border-left: 1px solid var(--orange);
+    border-left: 1px solid var(--yellow);
     margin: 3px;
 }
 .topics-container {
@@ -295,7 +295,7 @@ footer{
 }
 
 .uploadBtn button{
-    background-color: var(--green);
+    background-color: var(--blue);
     padding: 5px 10px;
     font-family: nunito;
     border-radius: 5px;
