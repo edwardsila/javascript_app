@@ -1,0 +1,106 @@
+@import url('./default.css');
+
+:root{
+    --green: #1dbf73;
+    --orange: #ffb71a;
+    --pink: #fe5858;
+}
+.hidden{
+    display: none !important; 
+}
+body{
+    background-color: whitesmoke;
+    display: grid;
+    align-items: center;
+    grid-template-rows: auto auto;
+    gap: 20px;
+}
+
+
+.company-logo{
+    text-align: center;
+    display: grid;
+    height: 50px;
+    align-items: center;
+}
+.company-logo img{
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    height: 50px;
+}
+@media screen and (max-width: 600px){
+    .company-logo img{
+        position: relative;
+    }
+    .company-logo{
+        grid-template-rows: 1fr 1fr;
+        align-items: center;
+    }
+}
+.company-logo h2{
+    padding: 5px;
+    margin-top: 20px;
+}
+
+.make-pay form{
+    margin: 60px auto;
+    width: fit-content;
+    padding: 50px;
+}
+label{
+    display: grid;
+    grid-template-columns: auto 1fr;
+    padding: 5px;
+    align-items: center;
+    margin: 15px 5px;
+}
+input[type="tel"]{
+    padding: 10px;
+    width: 100%;
+    outline: transparent;
+    border-radius: 5px;
+    border: 1px solid var(--green);
+    margin: 15px 5px;
+}
+.submit-payment{
+    padding: 10px 20px;
+    background-color: #1dbf73;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: block;
+    margin: 0px auto;
+}
+
+.complete-payment{
+    width: 70%;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.pay-complete{
+    padding: 10px 20px;
+    cursor: pointer;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    background-color: #ffb71a;
+    margin: 10px auto;
+}
+fieldset {
+    border: 1px solid var(--green);
+    padding: 25px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+section{
+    height: 100%;
+    
+}
+
+p{
+    line-height: 35px;
+}
+

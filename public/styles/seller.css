@@ -1,0 +1,447 @@
+@charset "utf-8";
+
+@import url(./default.css);
+
+:root{
+    --green: #1dbf73;
+    --orange: #ffb71a;
+    --pink: #fe5858;
+}
+::-webkit-scrollbar{
+  width: 10px;
+  border-radius: 5px;
+  box-shadow: inset 0px 0px 3px 0px gray;
+}
+::-webkit-scrollbar-thumb{
+  background-color: var(--green);
+  border-radius: 5px;
+}
+.hidden{
+    display: none !important;
+}
+body{
+  background-color: whitesmoke;
+}
+.dashboard {
+    margin: 0 auto;
+    padding: 0;
+  }
+  
+  .dash-header {
+    background-color: whitesmoke;
+    color: var(--green);
+    padding: 5px;
+    display: grid;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 500;
+    grid-template-columns: repeat(5, auto) ;
+    gap: .5rem;
+    box-shadow: 0px 0px 5px 0px gray;
+  }
+  .img-logo{
+    width: fit-content;
+    height: fit-content;
+  }
+  .img-logo img{
+    width: 100px;
+    cursor: pointer;
+    height: 50px;
+  }
+  .dash-menu {
+    width: fit-content;
+    display: flex;
+    align-items: center;
+  }
+  .dash-menu h2 {
+    margin-left: 0;
+    float: left;
+    font-size: 28px;
+    font-weight: 500;
+  }
+  .dash-options{
+    display: grid;
+    align-items: center;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0.5rem;
+  }
+  .dash-options li{
+    cursor: pointer;
+  }
+  .user-avatar{
+    overflow: hidden;
+    cursor: pointer;
+    display: grid;
+    align-items: center;
+  }
+  .profile-pic{
+    width: 30px;
+    height: 30px;
+    border: 1px solid var(--orange);
+    border-radius: 15px;
+    overflow: hidden;
+  }
+  .profile-pic img{
+    height: 100%;
+    width: 30px;
+  }
+  
+  .dashboard-content {
+    background-color: #f2f2f2;
+    display: grid;
+    grid-template-columns: 300px auto;
+    margin-top: 70px;
+  }
+  .dash-side{
+    padding: 15px;
+    background-color: white;
+    margin: 5px;
+  }
+  .dash-content{
+    padding: 15px;
+    margin: 5px;
+    background-color: white;
+  }
+
+  .user-profile{
+    
+    text-align: center;
+  }
+  .user{
+    padding: 15px;
+  }
+  .user h4{
+    margin-top: 20px;
+  }
+  .profile {
+    position: relative;
+    display: inline-block;
+    width: 100px;
+    margin: 5px 15px;
+    height: 100px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 1px solid var(--green);
+    
+  }
+  
+  .profile-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .profile-input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+  }
+  .user-rates{
+    padding: 15px 10px;
+    border-top: 1px solid var(--green);
+  }
+  
+  .rate{
+    margin: 5px;
+    padding: 3px;
+  }
+ /* progress bar css */
+ .progress-bar-container {
+  width: 100%;
+  position: relative;
+  border-radius: 3px;
+  margin: 0px;
+}
+progress::-webkit-progress-value {
+  background: #1dbf73;
+  border-radius: 3px;
+}
+progress{
+  width: 100%;
+}
+.user-desc{
+  padding: 10px;
+  margin: 10px 0;
+}
+.user-skills{
+  padding: 10px;
+  margin: 10px 0;
+}
+
+/* Style the circular rates */
+
+.c-rates {
+  display: none;
+}
+
+/* Apply css properties to ui-widgets class */
+.ui-widgets {
+  position: relative;
+  display: grid;
+  grid-template-rows: auto auto;
+  gap: .5rem;
+  width: fit-content;
+  height: fit-content;
+  border-radius: 9rem;
+  text-align: center;
+}
+
+/* Apply css properties to the second
+  child of ui-widgets class */
+.ui-widgets:nth-child(2) {
+  border-left-color: #9adcbd;
+  border-top-color:#49b181 ;
+  border-right-color: var(--green);
+  border-bottom-color: white;
+}
+
+/* Apply css properties to ui-widgets
+ class and ui-values class */
+.ui-widgets .ui-values {
+  display: grid;
+  align-items: center;
+  font-weight: 500;
+  font-size: 12px;
+
+  width: 5rem;
+  height: 5rem;
+  border-radius: 9rem;
+  border: 1.2rem solid palegreen;
+  box-shadow: inset 0 0 7px grey;
+  border-left-color: #9adcbd;
+  border-top-color:#49b181 ;
+  border-right-color: var(--green);
+  border-bottom-color: white ;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+/*  Apply css properties to ui-widgets 
+class and ui-labels class */
+.ui-widgets .ui-labels {
+  left: 0;
+  bottom: -15px;
+  color:black;
+  position: absolute;
+  width: 100%;
+  font-size: 12px;
+}
+
+.active-jobs {
+  background-color: var(--orange);
+  color: white;
+  padding: 12px;
+  border: none;
+  cursor: pointer;
+}
+.active-jobs h3{
+  padding: 5px;
+  margin: 4px 0 4px 20px;
+  font-size: 18px;
+}
+.job{
+  padding: 10px;
+  margin: 10px 0;
+}
+.job h2{
+  color: var(--green);
+  padding: 5px;
+}
+.job p{
+  padding: 5px;
+  margin: 3px;
+}
+.pending-orders{
+  background-color: var(--pink);
+  color: white;
+  padding: 15 0px;
+  margin-top: 50px;
+  cursor: pointer;
+}
+.pending-orders h3{
+  padding: 5px;
+  margin: 4px 0 4px 20px;
+  font-size: 18px;
+}
+.proposal{
+  padding: 10px;
+  margin: 10px 0;
+}
+.proposal h2{
+  color: #1dbf73;
+  padding: 5px;
+}
+.proposal p{
+  padding: 5px;
+  margin: 3px;
+}
+
+/* Style the dropdown content (hidden by default) */
+.dropdown-jobs,.dropdown-proposals {
+  margin-bottom: 30px;
+  display: none;
+  background-color: white;
+  z-index: 1;
+}
+
+
+.proposal h2,p{
+  color: black;
+}
+
+/* Show the dropdown content when the dropdown button is clicked */
+.dropdown-btn:hover .dropdown-content {
+  display: block;
+}
+  
+  @media (max-width: 768px) {
+    .dashboard-header{
+      display: flex;
+      justify-content: space-around;
+      background-color: var(--green);
+      position: absolute;
+    }
+    .img-logo img{
+      width: 75px;
+      height: 70px;
+    }
+    /* .dash-menu{
+      display: none;
+    }
+    .ploto{
+      display: none;
+    } */
+    .dashboard-content{
+      display: block;
+    }
+    
+    
+    .rates{
+      display: none;
+    }
+    .c-rates{
+      display: flex;
+    justify-content: space-around;
+    }
+    .user-profile{
+      padding-top: 80px;
+      display: block;
+      text-align: center;
+    }
+    
+  }
+  
+  @media (min-width: 768px) {
+    hr{
+      border: 1px solid var(--green);
+      margin: 10px auto;
+    }
+    .dash-side{
+        overflow-y: scroll;
+        height: calc(100vh - 80px);
+    }
+  }
+  
+
+  .join-date{
+    font-size: 14px;
+  }
+
+  .evidence {
+    padding-left: 20px;
+  }
+
+ .writer-description{
+     display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    cursor: pointer;
+}
+.rating{
+    width: fit-content;
+    text-align: center;
+}
+.rating-meter > i{
+    color: gray;
+}
+
+#form0, #form1{
+    position: fixed;
+    top: 30%;
+    background: whitesmoke;
+    border-radius: 10px;
+    padding: 10px;
+    display: grid;
+    gap: 5px;
+    max-width: 90vw;
+    box-shadow: 0px 0px 5px 0px var(--green);
+    grid-template-rows:repeat(4, auto);
+}
+
+.description-nav{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    text-align: center;
+    width: 100%;
+}
+description-nav > div{
+    text-align: center;
+}
+.description-nav button{
+    width: 100px;
+    padding: 5px;
+    text-align: center;
+    border-radius: 5px;
+    color: white;
+}
+.update-description{
+    background-color: var(--green);
+}
+.close-description{
+    background-color: var(--pink);
+}
+
+#form1 > *{
+  margin: 10px auto;
+}
+
+#form1 .skill-item{
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 10px;
+  padding: 3px 10px;
+}
+
+.skill-item{
+  padding: 3px 10px;
+  border: 1px solid var(--green);
+  margin: 5px 0px;
+}
+.skill-level{
+  background-color: var(--green);
+  color: white;
+  padding: 3px;
+  border-radius: 3px;
+  width: fit-content;
+}
+
+.form-content{
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 10px;
+}
+
+.form-content  input, .form-content  select{
+  padding: 5px;
+}
+
+.user-skills{
+  cursor: pointer;
+}

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WorkHub Writers : Join Us</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="/styles/signup.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+</head>
+<body>
+    <nav>
+        <div id="nav-brand">
+            <div onclick="location.href='/'">
+                <img src="logo.svg" alt="" id="logo-image" >
+            </div>
+        </div>
+        <div>
+            <h3>
+                Join us
+            </h3>
+        </div>
+    </nav>
+   
+<section class="step" id="one" step="1">
+    <h1>Join as a writer or a client</h1>
+    <div class="step-one-options">
+        <div class="step-one-option" href="/signup?account=writer">
+            <div class="one-top">
+                <img src="/images/writing-icon.jpg" alt="">
+                <div class="selected"></div>
+            </div>
+            <h3>I am a writer, looking for a job</h3>
+        </div>
+        <div class="step-one-option" href="/signup?account=client">
+            <div class="one-top">
+                <img src="/images/employer.png" alt="">
+                <div class="selected"></div>
+            </div>
+            <h3>I am a client, looking for someone to hire</h3>
+        </div>
+    </div>
+    <div class="next">
+        <button disabled id="to-step-two">continue</button>
+    </div>
+    <div class="link">
+        <span> Have an account? </span><a href="/login">Login</a>
+    </div>
+</section>
+<footer>
+    <div id="step-info">
+
+    </div>
+    <div class="steps-progress">
+        <div class="step-count active" text="Choose account type">
+            1
+        </div>
+        <div class="step-count" text="Enter your details">
+            2
+        </div>
+        <div class="step-count" text="Complete creating account">
+            <i class="fa-solid fa-check"></i>
+        </div>
+    </div>
+</footer>
+</body>
+<script>
+const stepOneOptions = document.querySelectorAll('.step-one-option')
+const root = document.documentElement;
+var link='';
+
+const green = getComputedStyle(root).getPropertyValue('--green')
+const orange = getComputedStyle(root).getPropertyValue('--orange')
+const red = getComputedStyle(root).getPropertyValue('--pink')
+stepOneOptions.forEach(option=>{
+    option.addEventListener('click', event=>{
+        const btn= document.getElementById('to-step-two')
+        btn.disabled = false
+        btn.onclick = e=> location.href = option.getAttribute('href')
+        stepOneOptions.forEach(element=>{
+            element.querySelector('.selected').style.backgroundColor = '';
+            element.querySelector('.selected').innerHTML ='';
+            element.style.borderColor ='';
+        })
+        option.querySelector('.selected').innerHTML = '<i class="fa-solid fa-check"></i>'
+        option.querySelector('.selected').style.backgroundColor=green
+        option.style.borderColor = green
+    })
+})
+</script>
+</html>

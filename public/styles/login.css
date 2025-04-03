@@ -1,0 +1,78 @@
+@charset "utf-8";
+
+@import url(./default.css);
+
+:root{
+    --green: #1dbf73;
+    --orange: #ffb71a;
+    --pink: #fe5858;
+}
+.hidden{
+    display: none !important;
+}
+body{
+    background-color: whitesmoke;
+}
+i{
+    font-size: 2rem;
+}
+.login-container{
+    margin: 50px auto;
+    border-radius: 5px;
+    padding: 30px;
+    width: fit-content;
+    background-color: white;
+}
+.login-logo{
+    text-align: center;
+    padding: 10px;
+    margin: 5px;
+}
+.login-logo img{
+    margin: 0 auto;
+    height: 90px;
+    width: 90px;
+    border-radius: 50%;
+    border: 1px solid var(--green);
+    background-color: whitesmoke;
+}
+
+form h3{
+    text-align: center;
+    color: #1dbf73;
+    padding: 5px;
+    margin: 10px auto;
+    font-size: 16px;
+}
+
+label{
+    padding: 5px;
+    margin: 10px auto;
+}
+input[type="email"],input[type="password"]{
+    padding: 10px;
+    margin: 5px auto;
+    width: 100%;
+    border: 1px solid var(--green);
+    border-radius: 5px;
+}
+
+input[type="submit"]{
+    border: none;
+    background-color: #1dbf73;
+    padding: 10px;
+    width: 100%;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    margin: 10px auto;
+}
+
+p{
+    padding: 3px 5px;
+    margin: 3px 15px;
+    font-size: 12px;
+}
+p a{
+    font-size: 14px;
+}

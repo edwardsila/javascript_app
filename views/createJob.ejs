@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Job</title>
+</head>
+<body>
+    <%- include('./fragments/account-check.ejs') %>
+    <form action="" id="create-job">
+        <h2>Create new job</h2>
+        <label for="title">
+            <p>Title</p>
+            <input type="text" name="title" id="title">
+        </label>
+        <div class="keywords-input">
+            <p>Keywords</p>
+            <div id="keywords-screen"></div>
+            <div>
+                <input type="text" name="keywords" id="keywords">
+                <div class="add-keyword"><i class="fa-solid fa-plus"></i></div>
+            </div>
+        </div>
+        <div class="time-input">
+            <p>Time expected</p>
+            <p>
+                <input type="number" name="time-value" id="time-value"> 
+                <select name="time-unit" id="time-unit" >
+                    <option value="hours">Hours</option>
+                    <option value="days">Days</option>
+                    <option value="weeks">Weeks</option>
+                    <option value="months">Months</option>
+                </select>
+            </p>
+        </div>
+        <label for="price">
+            <p>Price</p>
+            <p><span>$</span><input type="number" name="price" id="price" min="1"></p>
+        </label>
+        <label for="expertiseLevel">
+            <p>Level of expertise</p>
+            <select name="expertiseLevel" id="expertiseLevel">
+                <option value="beginner">Beginner</option>
+                <option value="intermediate">Intermediate</option>
+                <option value="expert">Expert</option>
+                <option value="N/A">Unspecified</option>
+            </select>
+        </label>
+    </form>
+</body>
+</html>

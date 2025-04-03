@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Floating WhatsApp Button</title>
+</head>
+
+<body>
+    <div class="floating-button">
+        <button id="whatsapp-button"><i class="fa-brands fa-whatsapp"></i></button>
+    </div>
+
+    <style>
+        /* Styling for the floating button */
+        .floating-button {
+            position: fixed;
+            bottom: 2.5rem;
+            right: 1.5rem;
+            z-index: 999;
+        }
+
+        /* Styling for the WhatsApp button */
+        #whatsapp-button {
+            background-color: #25d366;
+            color: #fff;
+            border: none;
+            height: 3rem;
+            width: 3rem;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 2rem;
+        }
+
+        #whatsapp-button:hover {
+            background-color: #128C7E;
+        }
+    </style>
+
+    <script>
+        // Function to open WhatsApp chat when the button is clicked
+        document.getElementById('whatsapp-button').addEventListener('click', function () {
+            var phoneNumber = '254740361934';
+
+            // Create the WhatsApp link
+            var whatsappLink = 'https://api.whatsapp.com/send?phone=' + phoneNumber;
+
+            // Open the WhatsApp chat in a new tab/window
+            window.open(whatsappLink, '_blank');
+        });
+
+    </script>
+</body>
+
+</html>

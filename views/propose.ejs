@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apply for a job</title>
+    <link rel="stylesheet" type="text/css" href="/styles/propose.css">
+</head>
+<body>
+    <section id="header">
+        <div class="header-left">
+            <img src="/logo.svg" alt="" onclick="location.href='/'" title="Back to home page">
+        </div>
+        <div class="header-right">
+            <h3>Job Application</h3>
+            <p><a href="/jobs">Back to jobs</a></p>
+        </div>
+    </section>
+    <div class="job-details">
+        <form action="/proposal" method="post">
+            <input type="text" name="job" value="<%= job._id %>" style="display: none;">
+            <div class="top-job-details">
+                <h3>Job Details</h3>
+                <div class="top-details">
+                    <div class="details-lft">
+                        <h2 class="title"><%= job.title %></h2>
+                        <div class="description">
+                            <h3>Description</h3>
+                            <p><%= job.description %></p>
+                        </div>
+                    </div>
+                    <div class="details-rgt">
+                        <h4>Specifications</h4>
+                        <h5> <span><i class="fa-solid fa-wrench"></i></span> Experience Level</h5>
+                        <p class="experience-level"><%= job.expertiseLevel %></p>
+                        <h5> <span><i class="fa-solid fa-calendar-days"></i></span>Completion Time</h5>
+                        <p class="duration"><%= job.timeExpected%></p>
+                        <h5> <span><i class="fa-solid fa-tags"></i></span> Project Budget</h5>
+                        <p>$ <span class="price"><%= job.price %></span></p>
+                    </div>
+                </div>
+            </div>
+            <div class="job-terms">
+                <h3>Terms</h3>
+                <div class="job-pay">
+                    <h4>How Much do want to be paid</h4>
+                    <input type="number" name="price" id="job-price" placeholder="What you expect to be paid" min="0" required>
+                </div>
+                <div class="period">
+                    <h3>Specify the time you can complete this task</h3>
+                    <div class="period-input">
+                        <div class="period-value">
+                            <label for="periodValue">i.e <strong>3</strong> in <strong>3</strong> hours</label>
+                            <input type="number" name="periodValue" id="periodValue" min="1" value="1" required>
+                        </div>
+                        <div class="period-unit">
+                            <label for="periodUnit">i.e. <strong>hours</strong> in 3 <strong>hours</strong></label>
+                            <select name="periodUnit" id="periodUnit" required >
+                                <option value="">Select Period</option>
+                                <option value="hours">Hours</option>
+                                <option value="days">Days</option>
+                                <option value="weeks">Weeks</option>
+                                <option value="months">Months</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div id="periodText">
+                        You haven't specified your completion time
+                    </div>
+                </div>
+            </div>
+            <div class="attachments">
+                <h3>Cover Letter</h3>
+                <textarea name="coverLetter" id="" cols="30" rows="10" placeholder="Enter your cover letter..." required></textarea>
+            </div>
+            <div class="send-proposal">
+                <button>Send Proposal</button>
+            </div>
+        </form>
+    </div>
+    <script>
+        periodUnit.onchange= e=>{
+            if(periodValue.value && periodUnit.value){
+                periodText.innerHTML= `You can complete this task in <strong>${periodValue.value} ${periodUnit.value}</strong>`
+            }else{
+                periodText.innerHTML = "You haven't specified your completion time"
+            }
+        }
+        periodValue.onchange= e=>{
+            if(periodValue.value && periodUnit.value){
+                periodText.innerHTML= `You can complete this task in <strong>${periodValue.value} ${periodUnit.value}</strong>`
+            }else{
+                periodText.innerHTML = "You haven't specified your completion time"
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
+  <link rel="icon" type="image/png" href="/favicon.ico">
+
+  <link rel="stylesheet" href="/fontawesome/css/all.min.css">
+  <title>
+    Referrals | WorkHub Writers
+  </title>
+  <!-- Nucleo Icons -->
+  <link href="../assets/css/nucleo-icons.css" rel="stylesheet" />
+  <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
+  <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
+  <!-- CSS Files -->
+  <link id="pagestyle" href="../assets/css/soft-ui-dashboard.css?v=1.0.7" rel="stylesheet" />
+  <link rel="stylesheet" href="/styles/default.css">
+</head>
+
+<body class="g-sidenav-show  bg-gray-100">
+
+  <%- include('dash-aside') %>
+    <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
+      <!-- Navbar -->
+
+      <%- include('dash-nav') %>
+        <!-- End Navbar -->
+        <div class="container-fluid">
+          <div class="page-header min-height-300 border-radius-xl mt-4"
+            style="background-image: url('../assets/img/curved-images/curved-10.jpg'); background-position-y: 50%;">
+            <span class="mask bg-gradient-primary opacity-6"></span>
+          </div>
+          <div class="card card-body blur shadow-blur mx-4 mt-n6 overflow-hidden">
+            <div class="row gx-4">
+              <div class="col-auto">
+                <div class="avatar avatar-xl position-relative">
+                  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
+                    id="Layer_1" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;"
+                    xml:space="preserve">
+                    <style type="text/css">
+                      .st1 {
+                        fill: #FFFFFF;
+                      }
+                    </style>
+                    <title>Writer's Icon</title>
+                    <desc>Created with Sketch.</desc>
+                    <g id="Symbols">
+                      <g>
+                        <g id="Group-2">
+                          <g id="fabio-spinelli-695744-unsplash">
+                            <g id="Mask">
+                              <circle fill="<%=color %>" cx="50" cy="50" r="50" />
+                            </g>
+                          </g>
+                          <g id="Group" transform="translate(29.000000, 30.000000)">
+                            <ellipse id="Oval-8" class="st1" cx="21" cy="10.7" rx="10.7" ry="10.7" />
+                            <path id="Path-4" class="st1"
+                              d="M0.8,37.9C4.2,30,11,26,21,26S37.8,30,41.2,37.9l0,0c0.3,0.8,0,1.7-0.8,2      C40.2,40,40,40,39.8,40L2.2,40c-0.8,0-1.5-0.7-1.5-1.5C0.7,38.3,0.7,38.1,0.8,37.9z" />
+                          </g>
+                        </g>
+                      </g>
+                    </g>
+                  </svg>
+                </div>
+              </div>
+              <div class="col-auto my-auto">
+                <div class="h-100">
+                  <h5 class="mb-1">
+                    <%= user.name %>
+                      <% if(user.verification) {%>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" height="20px" width="20px"
+                          fill="none">
+                          <title>Verified Account</title>
+                          <path fill-rule="evenodd" clip-rule="evenodd"
+                            d="M9.5924 3.20027C9.34888 3.4078 9.22711 3.51158 9.09706 3.59874C8.79896 3.79854 8.46417 3.93721 8.1121 4.00672C7.95851 4.03705 7.79903 4.04977 7.48008 4.07522C6.6787 4.13918 6.278 4.17115 5.94371 4.28923C5.17051 4.56233 4.56233 5.17051 4.28923 5.94371C4.17115 6.278 4.13918 6.6787 4.07522 7.48008C4.04977 7.79903 4.03705 7.95851 4.00672 8.1121C3.93721 8.46417 3.79854 8.79896 3.59874 9.09706C3.51158 9.22711 3.40781 9.34887 3.20027 9.5924C2.67883 10.2043 2.4181 10.5102 2.26522 10.8301C1.91159 11.57 1.91159 12.43 2.26522 13.1699C2.41811 13.4898 2.67883 13.7957 3.20027 14.4076C3.40778 14.6511 3.51158 14.7729 3.59874 14.9029C3.79854 15.201 3.93721 15.5358 4.00672 15.8879C4.03705 16.0415 4.04977 16.201 4.07522 16.5199C4.13918 17.3213 4.17115 17.722 4.28923 18.0563C4.56233 18.8295 5.17051 19.4377 5.94371 19.7108C6.278 19.8288 6.6787 19.8608 7.48008 19.9248C7.79903 19.9502 7.95851 19.963 8.1121 19.9933C8.46417 20.0628 8.79896 20.2015 9.09706 20.4013C9.22711 20.4884 9.34887 20.5922 9.5924 20.7997C10.2043 21.3212 10.5102 21.5819 10.8301 21.7348C11.57 22.0884 12.43 22.0884 13.1699 21.7348C13.4898 21.5819 13.7957 21.3212 14.4076 20.7997C14.6511 20.5922 14.7729 20.4884 14.9029 20.4013C15.201 20.2015 15.5358 20.0628 15.8879 19.9933C16.0415 19.963 16.201 19.9502 16.5199 19.9248C17.3213 19.8608 17.722 19.8288 18.0563 19.7108C18.8295 19.4377 19.4377 18.8295 19.7108 18.0563C19.8288 17.722 19.8608 17.3213 19.9248 16.5199C19.9502 16.201 19.963 16.0415 19.9933 15.8879C20.0628 15.5358 20.2015 15.201 20.4013 14.9029C20.4884 14.7729 20.5922 14.6511 20.7997 14.4076C21.3212 13.7957 21.5819 13.4898 21.7348 13.1699C22.0884 12.43 22.0884 11.57 21.7348 10.8301C21.5819 10.5102 21.3212 10.2043 20.7997 9.5924C20.5922 9.34887 20.4884 9.22711 20.4013 9.09706C20.2015 8.79896 20.0628 8.46417 19.9933 8.1121C19.963 7.95851 19.9502 7.79903 19.9248 7.48008C19.8608 6.6787 19.8288 6.278 19.7108 5.94371C19.4377 5.17051 18.8295 4.56233 18.0563 4.28923C17.722 4.17115 17.3213 4.13918 16.5199 4.07522C16.201 4.04977 16.0415 4.03705 15.8879 4.00672C15.5358 3.93721 15.201 3.79854 14.9029 3.59874C14.7729 3.51158 14.6511 3.40781 14.4076 3.20027C13.7957 2.67883 13.4898 2.41811 13.1699 2.26522C12.43 1.91159 11.57 1.91159 10.8301 2.26522C10.5102 2.4181 10.2043 2.67883 9.5924 3.20027ZM16.3735 9.86314C16.6913 9.5453 16.6913 9.03 16.3735 8.71216C16.0557 8.39433 15.5403 8.39433 15.2225 8.71216L10.3723 13.5624L8.77746 11.9676C8.45963 11.6498 7.94432 11.6498 7.62649 11.9676C7.30866 12.2854 7.30866 12.8007 7.62649 13.1186L9.79678 15.2889C10.1146 15.6067 10.6299 15.6067 10.9478 15.2889L16.3735 9.86314Z"
+                            fill="<%= color %>" />
+                        </svg>
+                        <% } %>
+                  </h5>
+                  <p class="mb-0 font-weight-bold text-sm">
+                    Referral code <span type="text" disabled
+                      style="border: 1px solid gray ; border-radius: 2px; padding: 3px; margin: 0px 3px;">
+                      <%= user.referral %>
+                    </span> <i class="fas fa-copy" id="copyRefCode"></i>
+                  </p>
+                </div>
+              </div>
+              <div class="text-end col-lg-4 col-md-6 my-sm-auto ms-sm-auto me-sm-0 mx-auto mt-3">
+
+                <i class="fas fa-user text-lg" data-bs-toggle="tooltip" data-bs-placement="top"
+                  aria-label="Your profile" data-bs-original-title="Your profile"
+                  onclick="location.href='/dashboard/profile'"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="card-body p-3">
+            <p class="text-sm">
+            <div class="edit-about">
+                <div class="heading-label">
+                  <div class="col-md-8 d-flex align-items-center">
+                    <h6 class="mb-0" style="font-family: quicksand;">Get <span class="text-danger">KES 150</span> for each friend you invite</h6>
+                  </div>
+                  <div class="col-md-4 text-end">
+                    <i class="fas fa-user-edit text-secondary text-sm" data-bs-toggle="tooltip" data-bs-placement="top"
+                      title="Invite Code"></i>
+                  </div>
+                </div>
+              <div id="referralMessage" style="display: none;">
+                Use this invitation code <strong><%= user.referral %></strong> on sign up and get KES 150 when you get verified!
+              </div>
+              <div class="e-a-content"
+                style="display: grid; grid-template-columns: 1fr auto auto; gap: 10px; width: fit-content;">
+                <textarea name="about" id="referral-code" rows="1" style="resize: none;"
+                  disabled><%= user.referral %></textarea>
+                <button id="copyButton" class="bg-gradient-primary" style="border-radius: 3px; padding: 1px 10px;"
+                  title="copy"><i id="fa-copy-2" class="fas fa-copy"></i></button>
+                <button id="shareButton" class="bg-gradient-success" style="border-radius: 3px; padding: 1px 10px;"
+                  title="share"><i class="fas fa-share-from-square" id="fa-share-2"></i></button>
+              </div>
+            </div>
+            <script>
+              /* Get the text of the referral code element */
+              var referralCodeElement = document.getElementById('referralMessage');
+              var referralCodeText = referralCodeElement.textContent || referralCodeElement.innerText;
+              const inviteCode = document.getElementById("referral-code").value;
+              const copyButton = document.getElementById('copyButton');
+              function copyCode(){
+                /* Create a temporary input element and set its value to the referral code text */
+                var tempInput = document.createElement('input');
+                tempInput.setAttribute('value', referralCodeText);
+                document.body.appendChild(tempInput);
+
+                /* Select and copy the text from the temporary input element */
+                tempInput.select();
+                document.execCommand('copy');
+                /* Remove the temporary input element */
+                document.body.removeChild(tempInput);
+
+              }
+              const copyRefCode = document.getElementById('copyRefCode');
+              copyRefCode.addEventListener('click', ()=>{
+                copyCode();
+                copyRefCode.classList.remove('fa-copy');
+                copyRefCode.classList.add('fa-check')
+                setTimeout(() => {
+                  copyRefCode.classList.add('fa-copy');
+                  copyRefCode.classList.remove('fa-check')
+                }, 5000);
+              })
+              copyButton.addEventListener('click', () => {
+                
+
+                copyCode()
+                /* Provide feedback to the user that the code has been copied (you can customize this) */
+                document.getElementById("fa-copy-2").classList.remove("fa-copy");
+                document.getElementById("fa-copy-2").classList.add("fa-check");
+                setTimeout(()=>{
+                  document.getElementById("fa-copy-2").classList.remove("fa-check");
+                  document.getElementById("fa-copy-2").classList.add("fa-copy");
+                }, 5000)
+              })
+
+              const shareButton = document.getElementById('shareButton');
+              shareButton.addEventListener("click", ()=>{
+                const title = "Invite your friends to WorkHub Writers";
+                const text = referralCodeText;
+                const url = `https://workhubwriters.com/join/${inviteCode}`;
+                console.log(inviteCode);
+                shareContent(title, text, url);
+              })
+              function shareContent(title, text, url) {
+                // Check if the navigator.share API is available
+                if (navigator.share) {
+                  navigator.share({
+                    title: title,
+                    text: text,
+                    url: url
+                  })
+                    .then(() => {
+                      console.log("Shared successfully!");
+                      
+                    })
+                    .catch((error) => {
+                      console.error("Share failed:", error);
+                    }).finally(()=>{
+                      /* Provide feedback to the user that the code has been copied (you can customize this) */
+                      document.getElementById("fa-share-2").classList.remove("fa-share-from-square");
+                      document.getElementById("fa-share-2").classList.add("fa-check");
+                
+                      setTimeout(() => {
+                        document.getElementById("fa-share-2").classList.remove("fa-check");
+                        document.getElementById("fa-share-2").classList.add("fa-share-from-square");
+                        console.clear();
+                      }, 5000);
+                    });
+                } else {
+                  // Handle cases where the navigator.share API is not supported
+                  console.warn("navigator.share API is not available.");
+                  // You can provide a fallback behavior here, such as showing a share button
+                  // that opens a specific sharing page or another custom solution for sharing.
+                }
+              }
+
+            </script>
+            </p>
+          </div>
+          <div class="col-12">
+            <div class="card mb-4">
+              <div class="card-header pb-0">
+                <h6>Referrals made</h6>
+              </div>
+              <div class="card-body px-0 pt-0 pb-2">
+                <div class="table-responsive p-0">
+                  <table class="table align-items-center mb-0">
+                    <thead>
+                      <tr>
+                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Name</th>
+                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Date</th>
+                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                          Status</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <% !user.all.length ? '' : user.all.map(({name, createdAt, verified, url})=>{ %>
+                        <tr>
+                          <td>
+                            <div class="d-flex px-2 py-1">
+                              <div>
+                                <img src="/images/writing-icon.jpg" class="avatar avatar-sm me-3" alt="user1">
+                              </div>
+                              <div class="d-flex flex-column justify-content-center">
+                                <h6 class="mb-0 text-sm">
+                                  <%= name %>
+                                </h6>
+                                <p class="text-xs text-secondary mb-0">
+                                  workhubwriters.com<%= url %>
+                                </p>
+                              </div>
+                            </div>
+                          </td>
+                          <td>
+                            <p class="text-xs font-weight-bold mb-0 toDateString">
+                              <%= createdAt %>
+                            </p>
+                            <p class="text-xs text-secondary mb-0 toTimeString">
+                              <%= createdAt %>
+                            </p>
+                          </td>
+                          <td class="align-middle text-center text-sm">
+                            <% if(verified){ %>
+                              <span class="badge badge-sm bg-gradient-success"><i class="fas fa-check"
+                                  title="verified"></i></span>
+                              <% } else { %>
+                                <span class="badge badge-sm bg-gradient-success"><i class="fa-solid fa-hourglass-start" title="pending"></i></span>
+                                  <% } %>
+
+                          </td>
+                        </tr>
+
+                        <% }) %>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <footer class="footer pt-3  ">
+          <div class="container-fluid">
+            <div class="row align-items-center justify-content-lg-between">
+              <div class="col-lg-6 mb-lg-0 mb-4">
+                <div class="copyright text-center text-sm text-muted text-lg-start">
+                  ©
+                  <script>
+                    document.write(new Date().getFullYear())
+                  </script>,
+                  <a href="/" class="font-weight-bold">WorkHub Writers</a>
+
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </footer>
+        </div>
+    </main>
+    <!-- fix the dates to match the local times -->
+    <script>
+      let dateElements = document.querySelectorAll('.toDateString');
+      let timeElements = document.querySelectorAll('.toTimeString');
+
+      dateElements.forEach(element => {
+        element.innerHTML = new Date(element.innerText).toDateString();
+      })
+      timeElements.forEach(element => {
+        const date = new Date(element.innerText);
+        
+        const formattedTime = date.toLocaleTimeString('en-US', {
+            hour: 'numeric',
+            minute: 'numeric',
+            hour12: true
+        });
+
+        element.innerHTML = formattedTime;
+      })
+    </script>
+    <!--   Core JS Files   -->
+    <script src="../assets/js/core/popper.min.js"></script>
+    <script src="../assets/js/core/bootstrap.min.js"></script>
+    <script src="../assets/js/plugins/perfect-scrollbar.min.js"></script>
+    <script src="../assets/js/plugins/smooth-scrollbar.min.js"></script>
+    <script>
+      var win = navigator.platform.indexOf('Win') > -1;
+      if (win && document.querySelector('#sidenav-scrollbar')) {
+        var options = {
+          damping: '0.5'
+        }
+        Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
+      }
+    </script>
+    <!-- Github buttons -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
+    <script src="../assets/js/soft-ui-dashboard.min.js?v=1.0.7"></script>
+</body>
+
+</html>

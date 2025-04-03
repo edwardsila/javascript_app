@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WorkHub Writers : Join <%= name %></title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="/styles/signup.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+</head>
+<body>
+    <nav>
+        <div id="nav-brand">
+            <div onclick="location.href='/'">
+                <img src="logo.svg" alt="" id="logo-image" >
+            </div>
+        </div>
+        <div>
+            <h3>
+                Join us
+            </h3>
+        </div>
+    </nav>
+    
+        <section class="step" id="two" step="2">
+            <form action="/account/create" method="post" id="basic-info">
+                <h1>Give your basic information</h1>
+                <div class="information-form">
+                    <label for="referral" id="referral-for">
+                        <% if (referral) { %>
+                            <p>Invite code:</p> 
+                            <input type="text" name="referral" id="referralInput" value="<%= referral %>">
+                        <% } else { %>
+                            <p>Invite code <small style="color: var(--orange)">(optional)</small> </p> <input type="text" name="referral" id="referralInput">
+                        <% } %>
+                        <span id="invitedByName">
+                            <% if(name != "WorkHub Writers") {%>
+                                <%= name %>
+                            <% } else { %>
+                                <i class="fa-solid fa-spinner fa-spin"></i>
+                            <% } %>
+                        </span>
+                    </label>
+                  <label for="name">
+                    <p>Name</p>
+                    <input type="text" name="name" id="name" required>
+                  </label>
+                  <label for="email">
+                    <p>Email</p>
+                    <input type="email" name="email" id="email" required>
+                  </label>
+                  <label for="phone">
+                    <p>Phone</p>
+                    <input type="tel" name="phone" id="phone" required>
+                  </label>
+                  <label for="password">
+                    <p>Password</p>
+                    <div class="password-input-container">
+                      <input type="password" name="password" id="password" required>
+                      <i class="fa-solid fa-eye password-toggle-icon" id="password-toggle"></i>
+                    </div>
+                  </label>
+                  <label for="confirm-password">
+                    <p>Confirm your password</p>
+                    <div class="password-input-container">
+                      <input type="password" name="pwd" id="pwd" required="">
+                      <i class="fa-solid fa-eye password-toggle-icon" id="pwd-toggle"></i>
+                    </div>
+                  </label>
+                  <div class="password-status">
+                    <div class="pwd-strength pwd-message">
+                      <i class="fa-regular fa-circle"></i> <span>Enter a strong password</span>
+                    </div>
+                    <div class="pwd-match pwd-message">
+                      <i class="fa-regular fa-circle"></i> <span>Match the passwords</span>
+                    </div>
+                  </div>
+                  <div class="next">
+                    <button id="submit-btn">continue</button>
+                  </div>
+                </div>
+            </form>
+            <div class="link">
+                <span> Have an account? </span><a href="/login">Login</a>
+            </div>
+            <form action="" id="password-form" class="information-form">
+                
+            </form>
+        </section>
+        <section class="step hidden" id="three">
+            .status
+        </section>
+    </section>
+    <footer>
+        <div id="step-info">
+
+        </div>
+        <div class="steps-progress">
+            <div class="step-count done" text="Choose account type">
+                1
+            </div>
+            <div class="step-count active" text="Enter your details">
+                2
+            </div>
+            <div class="step-count" text="Complete creating account">
+                <i class="fa-solid fa-check"></i>
+            </div>
+        </div>
+    </footer>
+</body>
+<script>
+    const referralInput = document.getElementById("referralInput");
+    const invitedByName = document.getElementById("invitedByName");
+function getInviter(){
+    const code = referralInput.value;
+        invitedByName.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i>';
+
+        if (code) {
+            invitedByName.classList.remove('error', 'warn');
+            fetch(`/account/findByReferral?code=${code}`)
+                .then(response => {
+                    const status = response.status;
+                    if(status >= 500 ){
+                        invitedByName.classList.add("error");
+                    }else if(status >= 400 ){
+                        invitedByName.classList.add("error")
+                    }
+                    return response.json()
+                })
+                .then(data => {
+                    if (data && data.name) {
+                        invitedByName.textContent = `${data.name}`;
+                    } else {
+                        invitedByName.textContent = "Unknown";
+                    }
+                })
+                .catch(error => {
+                    console.error("Error fetching data:", error);
+                    invitedByName.textContent = "Error";
+                });
+        } else {
+            invitedByName.textContent = "...";
+        }
+}
+    referralInput.addEventListener("input", getInviter);
+    getInviter();
+</script>
+<script>
+    const apiEndpoint = 'https://api.workhubwriters.com/'
+    const root = document.documentElement;
+
+
+    var spinner = document.createElement('img');
+    spinner.setAttribute('src', '/images/loader.svg') 
+
+    const green = getComputedStyle(root).getPropertyValue('--green')
+    const orange = getComputedStyle(root).getPropertyValue('--orange')
+    const red = getComputedStyle(root).getPropertyValue('--pink')
+
+const passwordStrength=pwd=>{
+    let strongPassword = new RegExp('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])(?=.{8,})')
+    let mediumPassword = new RegExp('((?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])(?=.{6,}))|((?=.*[a-z])(?=.*[A-Z])(?=.*[^A-Za-z0-9])(?=.{8,}))')
+    if(strongPassword.test(pwd)){
+        return {color:green, message:"Password OK", icon: '<i class="fa-regular fa-circle-check" ></i>'}
+    }else if(mediumPassword.test(pwd)){
+        return {color:orange, message:"Average password", icon:'<i class="fa-solid fa-circle-exclamation"></i>'};
+    }else {
+        return {color:red, message:"Weak password", icon:'<i class="fa-solid fa-triangle-exclamation"></i>'};
+    }
+}
+
+const pwdInput = document.getElementById('password')
+const pwdConfirm = document.getElementById('pwd')
+pwdInput.addEventListener('keyup', event=>{
+    const {message, color, icon} = passwordStrength(pwdInput.value);
+    const pwdStrength = document.querySelector('.pwd-strength');
+    pwdStrength.innerHTML = `${icon} <span>${message}</span>`
+    pwdStrength.getElementsByTagName('i')[0].style.color = color;
+})
+
+pwdConfirm.addEventListener('keyup', event=>{
+    const pwdMatch = document.querySelector('.pwd-match');
+    if(!pwdConfirm.value){
+        pwdMatch.innerHTML = `<i class="fa-regular fa-circle"></i> <span>Match the passwords</span>`
+        pwdMatch.getElementsByTagName('i')[0].style.color='';
+    }else if (pwdConfirm.value != pwdInput.value){
+        pwdMatch.innerHTML = `<i class="fa-regular fa-circle-xmark"></i> <span>The passwords do not match</span>`
+        pwdMatch.getElementsByTagName('i')[0].style.color=red
+    }else{
+        pwdMatch.innerHTML = `<i class="fa-regular fa-circle-check" ></i> <span>The passwords match success</span>`
+        pwdMatch.getElementsByTagName('i')[0].style.color=green
+    }
+})
+
+
+
+function createMessageBar(){
+    const container = document.createElement('div');
+    const iconContainer = document.createElement('div');
+    const content = document.createElement('div');
+    const closeMsgBox = document.createElement('div');
+    const closeMsgBoxIcon  = document.createElement('i');
+
+    closeMsgBoxIcon.style.color = 'white';
+    closeMsgBoxIcon.style.fontSize = '1rem';
+    iconContainer.style.fontSize = '1rem';
+    
+    closeMsgBoxIcon.classList.add('fa-solid', 'fa-xmark');
+    closeMsgBoxIcon.style.fontSize = '1.5rem';
+    closeMsgBox.append(closeMsgBoxIcon);
+
+    container.append(iconContainer, content, closeMsgBox);
+    container.classList.add('hidden');
+
+    const styles =[
+        {
+            position: 'fixed',
+            top:0,
+            right:0,
+            width: '100vw',
+            height: '100vh',
+            padding: '10px',
+            display: 'grid',
+            gridTemplateColumns: '1fr 8fr 1fr',
+            transition: 'ease 400ms',
+            zIndex: 200,
+            backgroundColor: '#00000080',
+            backdropFilter: 'blur(10px)',
+            margin:'0px auto'
+        },
+        {
+            textAlign: 'center',
+            width: 'fit-content',
+            overflowY: 'hidden',
+            margin: 'auto',
+            padding: '20px 10px',
+            backgroundColor: 'white',
+            borderRadius: '5px'
+        }
+    ]
+    function loadStyles(element, styles){
+        for(let style in styles){
+            element.style[style] = styles[style];
+        }
+    }
+
+    loadStyles(container, styles[0]);
+    loadStyles(content, styles[1]);
+    return {
+        container,
+        iconContainer, 
+        content, 
+        closeMsgBox
+    };
+}
+
+let messageBoxElements = createMessageBar();
+document.body.append(messageBoxElements.container);
+function closeMsgBox(){
+    messageBoxElements.container.classList.add('hidden')
+}
+messageBoxElements.closeMsgBox.onclick = closeMsgBox;
+
+function message(information, color, icon){
+    let {
+        container,
+        iconContainer, 
+        content
+    } = messageBoxElements;
+
+    iconContainer.innerHTML = icon;
+    content.innerHTML=information;
+    content.style.color=color;
+    container.style.color = color;
+    //container.style.backgroundColor= 'white';
+    container.classList.remove("hidden");
+}
+
+
+
+function warn(msg){
+    message(msg, "orange", '<i class="fa-solid fa-triangle-exclamation"></i>');
+}
+
+function inform(msg){
+    message(msg, green, '<i class="fa-solid fa-circle-info fa-beat-fade" style="--fa-beat-fade-opacity: 0.67; --fa-beat-fade-scale: 1.075;" ></i>');
+}
+
+function _error(msg){
+    message(msg, 'red', '<i class="fa-solid fa-triangle-exclamation fa-fade"></i>');
+}
+function _loading(){
+    message('<img src="/images/loader.svg"/>', green, '<i class="fa-solid fa-spinner fa-spin"></i>')
+}
+
+
+
+
+const passwordToggle = document.getElementById('password-toggle');
+const pwdToggle = document.getElementById('pwd-toggle');
+
+passwordToggle.addEventListener('click', function() {
+  const passwordInput = document.getElementById('password');
+  if (passwordInput.type === 'password') {
+    passwordInput.type = 'text';
+    passwordToggle.classList.replace('fa-eye', 'fa-eye-slash');
+  } else {
+    passwordInput.type = 'password';
+    passwordToggle.classList.replace('fa-eye-slash', 'fa-eye');
+  }
+});
+
+pwdToggle.addEventListener('click', function() {
+  const pwdInput = document.getElementById('pwd');
+  if (pwdInput.type === 'password') {
+    pwdInput.type = 'text';
+    pwdToggle.classList.replace('fa-eye', 'fa-eye-slash');
+  } else {
+    pwdInput.type = 'password';
+    pwdToggle.classList.replace('fa-eye-slash', 'fa-eye');
+  }
+});
+
+</script>
+<style>
+    section#two{
+        padding: 10px 20px;
+    }
+    .steps-progress{
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .password-input-container {
+  position: relative;
+}
+
+.password-toggle-icon {
+  position: absolute;
+  top: 50%;
+  right: 0.5em;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.password-toggle-icon:hover {
+  color: #555;
+}
+
+#referral-for{
+    position: relative;
+}
+
+#invitedByName{
+    position: absolute;
+    right: 0px;
+    bottom: 3px;
+    font-weight: bold;
+    color: var(--green);
+}
+
+#invitedByName.warn{
+    color: var(--orange);
+}
+
+#invitedByName.error{
+    color: var(--pink);
+}
+
+</style>
+</html>

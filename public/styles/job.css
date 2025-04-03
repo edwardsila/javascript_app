@@ -1,0 +1,117 @@
+.jobs-category{
+    padding: .5rem;
+    box-shadow: 0 1px 6px 2px rgba(64, 60, 67, .16);
+    margin: 1rem auto;
+
+}
+#job{
+    border-bottom: 1px solid var(--pink);
+}
+#job > h1{
+    color: var(--green);
+    
+}
+.description{
+    box-shadow: 0 1px 6px 2px rgba(64, 60, 67, .16);
+    padding: 10px 20px;
+    margin: 15px 0;
+    border-radius: 5px;
+}
+
+.description h3{
+    color: var(--orange);
+}
+#header{
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 1rem;
+    align-items: center;
+    color: var(--green);
+}
+#header img{
+    cursor: pointer;
+    max-width: 20vw;
+}
+
+.header-right{
+    display: grid;
+    grid-template-columns: auto auto;
+}
+
+.client-info{
+    display: grid;
+    grid-template-columns: 1fr auto;
+    width: fit-content;
+    gap: 10px;
+    margin: 10px auto;
+}
+
+.essentials {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    width: fit-content;
+    margin: 10px auto;
+    border-radius: 5px;
+    box-shadow: 0 1px 6px 2px rgba(47, 44, 48, 0.271);
+    background: #f0f0f0;
+}
+
+.essential{
+    display: grid;
+    grid-template-rows: 1fr auto;
+    padding: 5px 10px;
+    gap: 10px;
+}
+.essential .key, .essential .value{
+    text-align: center;
+}
+.essential .key{
+    font-size: 50px;
+    color: var(--orange);
+}
+
+.essential .value{
+    color: var(--green);
+    font-weight: bold;
+    font-size: .9rem;
+}
+.keywords-container{
+    padding: 1rem 0;
+}
+.keywords{
+    display: flex;
+    flex-wrap: wrap;
+    font-size: .75rem;
+    align-content: space-around;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px 0px;
+}
+.keywords strong{
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin: 5px;
+}
+.keyword{
+    width: fit-content;
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: .5px solid var(--orange);
+    margin: 5px;
+}
+
+.button{
+    padding: 15;
+    width: fit-content;
+    margin: 10px auto;
+}
+
+.button button{
+    padding: 5px 10px;
+    border-radius: 5px;
+    background-color: var(--green);
+    color: white;
+    font-weight: bold;
+
+}

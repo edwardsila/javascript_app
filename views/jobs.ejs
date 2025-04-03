@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Jobs | WorkHUb Writers</title>
+    <meta name="description"
+        content="Get high-quality writing services from expert writers. WorkHub Writers connects writers with clients for all your writing needs.">
+    <meta name="keywords" content="writing services, content creation, copywriting, freelance writing, blog writing">
+    <meta property="og:title" content="WorkHub Writers - Professional Writing Services">
+    <meta property="og:description"
+        content="Get high-quality writing services from expert writers. WorkHub Writers connects writers with clients for all your writing needs.">
+    <meta property="og:image" content="https://workhubwriters.com/minimisedblack.png">
+    <meta property="og:url" content="https://workhubwriters.com">
+    <meta name="twitter:title" content="WorkHub Writers - Professional Writing Services">
+    <meta name="twitter:description"
+        content="Get high-quality writing services from expert writers. WorkHub Writers connects writers with clients for all your writing needs.">
+    <meta name="twitter:image" content="https://workhubwriters.com/minimisedblack.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="/styles/index.css">
+    <link rel="stylesheet" href="/styles/jobs.css">
+    <script src="/scripts/jobs.js" defer></script>
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <script src="/assets/js/momentjs.js"></script>
+</head>
+
+<body>
+    <div id="container">
+        <div id="nav">
+            <div class="job-header">
+                <div class="logo"><img src="/logo-t.svg" alt="" onclick="location.href='/'"></div>
+                <form id="header-search-bar" action="/jobs" method="post">
+                    <div class="input-container">
+                        <input type="text" name="query" id="search-input" placeholder="Search for a job"
+                            required="">
+                    </div>
+                    <button id="header-search-btn"><i class="fas fa-magnifying-glass"></i></button>
+                </form>
+            </div>
+
+            <section id="popular-types">
+                <h1>Most Popular in Writing &amp; Translation</h1>
+                <div class="popular-types-control">
+                    <button disabled><i class="fa-solid fa-angle-left"></i></button>
+                    <button><i class="fa-solid fa-angle-right"></i></button>
+                </div>
+                <div class="popular-types-container">
+                    <article class="article-type">
+                        <div class="article-type-container"><img
+                                src="/images/article.svg" alt=""><span>Articles
+                                &amp; Blog Posts</span><i class="fa-solid fa-arrow-right"></i></div>
+                    </article>
+                    <article class="article-type">
+                        <div class="article-type-container"><img
+                                src="/images/translate.svg"
+                                alt=""><span>Translation</span><i class="fa-solid fa-arrow-right"></i></div>
+                    </article>
+                    <article class="article-type">
+                        <div class="article-type-container"><img
+                                src="/images/ghost.svg" alt=""><span>Ghost
+                                Writing</span><i class="fa-solid fa-arrow-right"></i></div>
+                    </article>
+                    <article class="article-type">
+                        <div class="article-type-container"><img
+                                src="/images/edit.svg" alt=""><span>Proofreading
+                                &amp; Editing</span><i class="fa-solid fa-arrow-right"></i></div>
+                    </article>
+                    <article class="article-type">
+                        <div class="article-type-container"><img
+                                src="/images/resume.svg" alt=""><span>Resume
+                                Writing</span><i class="fa-solid fa-arrow-right"></i></div>
+                    </article>
+                    <article class="article-type">
+                        <div class="article-type-container"><img
+                                src="/images/webpage.svg" alt=""><span>Website
+                                Content</span><i class="fa-solid fa-arrow-right"></i></div>
+                    </article>
+                    <article class="article-type">
+                        <div class="article-type-container"><img
+                                src="/images/product.svg" alt=""><span>Product
+                                Description</span><i class="fa-solid fa-arrow-right"></i></div>
+                    </article>
+                    <article class="article-type">
+                        <div class="article-type-container"><img
+                                src="/images/script.svg" alt=""><span>Script
+                                Writing</span><i class="fa-solid fa-arrow-right"></i></div>
+                    </article>
+                    <article class="article-type">
+                        <div class="article-type-container"><img
+                                src="/images/book.svg" alt=""><span>Book
+                                Editing</span><i class="fa-solid fa-arrow-right"></i></div>
+                    </article>
+                </div>
+            </section>
+        </div>
+        <div id="jobs-container">
+           <div class="query-container">
+            <% if(query) {%>
+                <h3>Search results for: <span class="query"><%= query %></span></h3>
+            <% } else { %>
+                <h3>Recent Jobs</h3>
+            <% } %>
+            <div>
+                <i class="fas fa-angle-right"></i>
+            </div>
+           </div>
+            <% jobs.map(({title, description, price, createdAt, _id})=>{ %>
+                <div class="card" onclick="location.href='/job/id/<%= _id %>'">
+                    <h1 class="heading card-title" ><%= title %></h1>
+                    <p class="card-desc"><%= description %></p>
+                    <h4 class="card-price"><i class="fa-solid fa-tags"></i><span>$ <%= price %></span></h4>
+                    <p class="card-date"><i class="fa-solid fa-calendar-days"></i><span class="createdAt" data="<%= createdAt %>"> </span></p>
+                </div>
+            <% }) %>
+            <div class="pagination"> <span>Page <%= page %> of <%= pages %></span></div>
+            <div class="pagination">
+                <!-- Previous button -->
+                <button onclick="location.href='/jobs?page=1<%= query? `&query=${query}`: '' %>'" <%= page == 1 ? 'disabled' : '' %>>First</button>
+              
+                <!-- Display current page, previous page, and next page -->
+                <% for (let i = Math.min(Math.max(1, page - 1), Math.max(1, page - 2)); i <= Math.max(Math.min(+pages, +page + 1), Math.min(+pages, +page + 2)); i++) { %>
+                  <button onclick="location.href='/jobs?page=<%= i %><%= query? `&query=${query}`: '' %>'" class="<%= page == i ? 'active' : '' %>" <% if(page == i) {%> disabled <% }%> >
+                        <%= i %>
+                  </button>
+                <% } %>
+              
+                <!-- Next button -->
+                <button onclick="location.href='/jobs?page=<%= pages %><%= query? `&query=${query}`: '' %>'" <%= page == pages ? 'disabled' : '' %>>Last</button>
+              </div>
+              
+    </div>
+    <%- include("footer") %>
+</body>
+<script >
+    document.querySelectorAll('.createdAt').forEach(d=>{
+        let date = d.getAttribute('data');
+        d.innerText = moment(date).fromNow();
+    })
+</script>
+</html>

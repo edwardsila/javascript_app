@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Editor | WorkHub Writers</title>
+
+
+    <!-- Include Quill CSS -->
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mathquill/0.10.1/mathquill.min.css" rel="stylesheet">
+
+    <!-- Local css -->
+    <link rel="stylesheet" href="/styles/blogEditor.css">
+
+    <!-- Include Quill JavaScript -->
+    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/quill-image-resize-module@3.0.0/image-resize.min.js"></script>
+</head>
+
+<body>
+    <nav>
+        <div class="nav-left">
+            <img src="/images/logo.svg" alt="WorkHub Writers Logo">
+        </div>
+        <div class="nav-right">
+            <h1>Blog Editor</h1>
+        </div>
+    </nav>
+    <header>
+        <div class="author">
+            <h3>Author</h3>
+            <div class="values">
+                <h4>Your Name</h4>
+                <p>
+                    Your about in form of Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad quibusdam minus
+                    veritatis nisi aut ullam eaque doloremque ducimus molestias culpa.
+                </p>
+            </div>
+        </div>
+        <div class="blog">
+            <h3>Blog info</h3>
+            <div class="values">
+                <div class="title">
+                    <div class="key-value">
+                        <div class="key">
+                            <label for="blogTitle">Blog title</label>
+                            <i class="fa-solid fa-asterisk required" title="Required Field"></i>
+                        </div>
+                        <div class="val">
+                            <input type="text" name="title" id="blogTitle" placeholder="Blog title here">
+                        </div>
+                    </div>
+                </div>
+                <div class="topics-container">
+                    <div class="key">
+                        <span>Topics related to this blog </span>
+                        <small>(comma separated)</small>
+                        <i class="fa-solid fa-asterisk required" title="Required Field"></i>
+                    </div>
+                    <div class="topics" id="topicsContainer"> 
+                    </div>
+                    <div class="topic-input">
+                        <input type="text" name="topicInput" id="topicInput">
+                        <button id="addTopicButton"><i class="fas fa-plus"></i></button>
+                    </div>
+                    <div class="topics-count">
+                        <span class="topics-count">0</span>
+                        <span>/20 topics</span>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="quill-wrap">
+        <h3 class="ql-font-Nunito">Create blog</h3>
+        <!-- Create the toolbar container -->
+        <div id="toolbar">
+            <span class="ql-formats">
+                <select class="ql-header">
+                    <option value="1">Heading</option>
+                    <option value="2">Subheading</option>
+                    <option selected>Normal</option>
+                </select>
+                <span class="ql-formats">
+                    <select class="ql-size">
+                        <option value="10px">Small</option>
+                        <option value="16px">Normal</option>
+                        <option value="24px">Large</option>
+                        <option value="36px">Huge</option>
+                    </select>
+                </span>
+                <select class="ql-font">
+                    <option value="Neutra Text">Neutra</option>
+                    <option value="Quicksand">Quicksand</option>
+                    <option value="Nunito">Nunito</option>
+                    <option value="Rubik">Rubik</option>
+                    <option value="Times">Times</option>
+                    <option value="Garamond">Garamond</option>
+                </select>
+            </span>
+            <span class="ql-formats">
+                <button class="ql-bold"></button>
+                <button class="ql-italic"></button>
+                <button class="ql-underline"></button>
+                <button class="ql-strike"></button>
+            </span>
+            <span class="ql-formats">
+                <select class="ql-color"></select>
+                <select class="ql-background"></select>
+            </span>
+            <span class="ql-formats">
+                <button class="ql-list" value="ordered"></button>
+                <button class="ql-list" value="bullet"></button>
+                <select class="ql-align">
+                    <option selected></option>
+                    <option value="center"></option>
+                    <option value="right"></option>
+                    <option value="justify"></option>
+                </select>
+            </span>
+            <span class="ql-formats">
+                <button class="ql-blockquote"></button>
+                <button class="ql-link"></button>
+                <button class="ql-image"></button>
+                <button class="ql-code-block"></button>
+                <button class="ql-video"></button>
+            </span>
+            <span class="ql-formats">
+                <button class="ql-clean"></button>
+            </span>
+
+        </div>
+
+        <!-- Create the editor container -->
+        <div id="editor">
+
+        </div>
+    </div>
+
+    <form action="/blog/create" method="post">
+        <fieldset>
+            <legend>Blog Summary</legend>
+            <div>
+                <label for="excerpt">The summary of the blog should give a reader an overview of what you are discussing</label>
+                <i class="fa-solid fa-asterisk required" title="Required Field"></i>
+            </div>
+            <textarea name="excerpt" id="excerpt" cols="30" rows="10" placeholder="Write an overview of what your blog is about"></textarea>
+        </fieldset>
+    </form>
+    <footer>
+        <div class="uploadBtn">
+            <button>UPLOAD</button>
+        </div>
+    </footer>
+    <script src="/scripts/editBlog.js"></script>
+    <style>
+
+    </style>
+</body>
+
+</html>

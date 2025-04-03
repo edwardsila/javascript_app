@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>bind me</title>
+    <link rel="stylesheet" href="../styles/client.css">
+</head>
+<body>
+    <%- include('./fragments/account-check.ejs') %>
+    <div class="client-content">
+        <div class="up-actions">
+            <div class="c-details">
+                <h3>Welcome to Our Dashboard</h3>
+                <p>Welcome. Dorito's</p>
+            </div>
+            <div class="c-details2">
+                <button class="browse-job">Browse Projects</button>
+                <button class="post-job">Post a Job</button>
+            </div>
+        </div>
+        <div class="m-content">
+            <div class="c-tasks-jobs">
+                <div class="job-post">
+                    <h3>Your Job Posting</h3>
+                    <div class="posted-jobs">
+                        <i class="fa-solid fa-folder-open job-folder" ></i>
+                    </div>
+                    <div class="post-new">
+                        <button class="job-post-btn">Post a Job</button>
+                    </div>
+                </div>
+            </div>
+            <div class="c-tasks">
+                <div class="tasks-top">
+                    <h4>How it works</h4>
+                    <p>Connect with a talent community that numbers in the millions, fast and at no cost.
+                    </p>
+                </div>
+                <div class="steps">
+                    <div class="step-img">
+                        <i class="fa-regular fa-share-from-square"></i>
+                    </div>
+                    <div class="step-guide">
+                        <h4>1. Post a job to the marketplace</h4>
+                        <p>Provide enough detail for great talent 
+                            to figure out if the work is right for them.
+                            (You can always edit your post, or send an invite to reach out to people directly.)
+                        </p>
+                    </div>
+                </div>
+                <div class="steps">
+                    <div class="step-img">
+                        <i class="fa-solid fa-envelope-open-text"></i>
+                    </div>
+                    <div class="step-guide">
+                        <h4>2. Get proposals from talent</h4>
+                        <p>Provide enough detail for great talent 
+                            to figure out if the work is right for them.
+                            (You can always edit your post, or send an invite to reach out to people directly.)
+                        </p>
+                    </div>
+                </div>
+                <div class="steps">
+                    <div class="step-img">
+                        <i class="fa-solid fa-person-digging"></i>
+                    </div>
+                    <div class="step-guide">
+                        <h4>3. Start working together</h4>
+                        <p>Provide enough detail for great talent 
+                            to figure out if the work is right for them.
+                            (You can always edit your post, or send an invite to reach out to people directly.)
+                        </p>
+                    </div>
+                </div>
+                <div class="steps guide-4">
+                    <div class="step-img">
+                        <i class="fa-brands fa-amazon-pay"></i>
+                    </div>
+                    <div class="step-guide ">
+                        <h4>4.  Pay for work you approve</h4>
+                        <p>Provide enough detail for great talent 
+                            to figure out if the work is right for them.
+                            (You can always edit your post, or send an invite to reach out to people directly.)
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="post-form">
+        <h3>Job Posting</h3>
+          
+          <form id="myForm">
+            <fieldset>
+              <label for="name">Your Task Title:</label>
+              <input type="text" id="name" name="name" required placeholder="Enter your task title">
+              <h3>Examples</h3>
+              <ul>
+                <li>Mega Project Articles</li>
+                <li>Mega Project Articles</li>
+                <li>Mega Project Articles</li>
+              </ul>
+            </fieldset>
+            
+            <fieldset>
+              <label for="email">Search For Skills:</label>
+              <input type="email" id="email" name="email" required placeholder="Select Skills... ">
+              <p>Selected Skills</p>
+              <h5>Select Skills</h5>
+            </fieldset>
+            
+            <fieldset>
+              <label for="phone">Next, estimate the scope of your work.:</label>
+              <input type="radio" id="phone" name="medium" value="Medium">
+              <input type="radio" id="phone" name="medium" value="Small">
+              <input type="radio" id="phone" name="medium" value="Large">
+            </fieldset>
+            
+            <fieldset>
+              <label for="address">Tell us about your budget.:</label>
+              <input type="text" id="fro" name="fro" required placeholder="$ from ">
+              <input type="text" name="to" id="to" required placeholder="$ to">
+            </fieldset>
+            
+            <fieldset>
+              <label for="password">Describe your job:</label>
+              <textarea name="desc" id="desc" cols="60" rows="10" placeholder="Already have a ready made description? Paste it here"></textarea>
+              <input type="file" name="cover" id="cover" placeholder="Attach a file">
+              <ol>
+                <li>Clear expectations about your task or deliverables</li>
+                <li>Clear expectations about your task or deliverables</li>
+                <li>Clear expectations about your task or deliverables</li>
+                <li>Clear expectations about your task or deliverables</li>
+              </ol>
+              <button type="submit" class="submit">Submit</button>
+            </fieldset>
+          </form>
+          
+    </div> 
+</body>
+</html>

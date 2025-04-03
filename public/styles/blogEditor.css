@@ -1,0 +1,308 @@
+@charset "utf-8";
+
+
+@import url("https://use.typekit.net/psb8eyo.css");
+@import url(/fontawesome/css/all.css);
+@font-face {
+    font-family: "Neutra Text";
+    src: url(/fonts/NeutraText.otf);
+}
+
+
+@font-face {
+    font-family: nunito;
+    src: url(../fonts/nunito.ttf);
+}
+
+@font-face {
+    font-family: rubik;
+    src: url(../fonts/rubik.ttf);
+}
+
+@font-face {
+    font-family: quicksand;
+    src: url(../fonts/quicksand.ttf);
+}
+
+:root{
+    --green: #1dbf73;
+    --orange: #ffb71a;
+    --pink: #fe5858;
+}
+
+*{
+    box-sizing: border-box;
+    border: 0px;
+    padding: 0px;
+    margin: 0px;
+    outline: none;
+    list-style-type: none;
+}
+
+.wh-danger{
+    color: var(--pink);
+}
+body{
+    background-color: whitesmoke;
+}
+nav h1, header h1, header h3, header h4{
+    font-family: nunito;
+}
+nav h1{
+    color: var(--green);
+}
+header p{
+    font-family: quicksand;
+}
+header div, header span, header button, header small{
+    font-family: rubik;
+}
+nav{
+    position: relative;
+    padding: 5px 10px;
+    text-align: center;
+}
+.nav-left{
+    position: absolute;
+    top: 5px;
+    left: 5px;
+}
+
+.nav-left img{
+    height: 40px;
+}
+header > div{
+    padding: 10px;
+    margin: 10px;
+    max-width: 900px;
+}
+
+header h3{
+    padding: 5px 10px;
+    margin: 5px 0px;
+    width: fit-content;
+}
+.values{
+    padding-left: 1rem;
+}
+
+.values > div{
+    margin: 20px 0px;
+}
+
+.title .key-val{
+    display: grid;
+    grid-template-columns: auto 1fr;
+}
+
+header input{
+    padding: 3px 5px;
+    background-color: transparent;
+    font-family: nunito;
+}
+header .key{
+    font-size: small;
+    color:gray;
+}
+.title input{
+    font-size: x-large;
+    display: block;
+    width: 100%;
+    border-bottom: 1px dotted var(--green);
+}
+.required{
+    color: red;
+    font-size: small;
+}
+.topic{
+    display: inline-block;
+    background-color: white;
+    margin: 5px 10px;
+    border-radius: 7px;
+    box-shadow: 0 2px 5px 1px rgba(64, 60, 67, .16);
+}
+.topic span, .topic-input input{
+    padding: 5px 10px;
+}
+
+.topic button, .topic-input button{
+    border-radius: 0px 7px 7px 0px;
+    color: red;
+    background-color: white;
+    font-size: large;
+    height: 100%;
+    padding: 2px 5px;
+}
+
+.topic-input button{
+    color: var(--green);
+    padding-right: 10px;
+    height: fit-content;
+    border-left: 1px solid var(--orange);
+    margin: 3px;
+}
+.topics-container {
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: 1px solid gray;
+}
+
+.topic-input{
+    width: fit-content;
+    background-color: white;
+    margin: 5px 10px;
+    border-radius: 7px;
+    box-shadow: 0 2px 5px 1px rgba(64, 60, 67, .16);
+}
+
+/* Quill */
+
+.quill-wrap,nav, header, footer, form {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+}
+
+@media screen and (max-width: 768px){
+    .quill-wrap,nav, header, footer, form{
+        max-width: 90vw;
+    }
+}
+@media screen and (min-width:768px) and (max-width:1080px){
+    .quill-wrap,nav, header, footer, form{
+        max-width: 90vw;
+    }
+}
+@media screen and (min-width:1080px){
+    .quill-wrap,nav, header, footer, form{
+        max-width: 80vw;
+    }
+}
+.info {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.quill-wrap .ql-active {
+    border: 1px solid #ccc !important;
+    border-radius: 4px;
+}
+
+.quill-wrap button,
+.quill-wrap .ql-picker {
+    margin-right: 2px
+}
+
+/* Font styles for Quill editor */
+.ql-editor {
+    font-family: 'Neutra Text', sans-serif;
+    /* Default font */
+    font-size: 16px;
+    /* Adjust the font size as needed */
+}
+
+/* Apply different fonts to specific elements */
+.ql-font-Neutra{
+    font-family: 'Neutra Text';
+}
+.ql-font-Quicksand {
+    font-family: 'Quicksand', quicksand, sans-serif;
+}
+
+.ql-font-Nunito {
+    font-family: 'Nunito', nunito, sans-serif;
+}
+
+.ql-font-Rubik {
+    font-family: 'Rubik', rubik, sans-serif;
+}
+
+.ql-font-Times{
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.ql-font-Garamond{
+    font-family: "adobe-garamond-pro";
+}
+
+
+
+#editor {
+    font-family: "Rubik", rubik;
+    font-size: 18px;
+}
+
+/* Set dropdown font-families */
+#toolbar .ql-font span[data-label="Neutra"]::before {
+    font-family: "Neutra Text";
+}
+
+#toolbar .ql-font span[data-label="Quicksand"]::before {
+    font-family: "Quicksand", quicksand;
+}
+
+#toolbar .ql-font span[data-label="Nunito"]::before {
+    font-family: "Nunito", nunito;
+}
+
+#toolbar .ql-font span[data-label="Rubik"]::before {
+    font-family: "Rubik", rubik;
+}
+
+#toolbar .ql-font span[data-label="Garamond"]::before {
+    font-family:"adobe-garamond-pro", serif;
+}
+
+#toolbar .ql-font span[data-label="Times"]::before {
+    font-family: 'Times New Roman', Times, serif;
+}
+
+img {
+    max-width: 90vw;
+    max-height: 90vh;
+}
+
+form{
+    font-family: nunito;
+    margin: 20px auto;
+}
+fieldset{
+    border: 1px solid rgb(195, 195, 195);
+    padding: 20px;
+    border-radius: 5px;
+}
+legend{
+    padding: 0px 10px;
+}
+textarea{
+    resize: none;
+    width: 99%;
+    margin: 10px auto;
+    border: .5px solid rgb(190, 190, 190);
+    padding: 5px;
+    font-family:"Neutra Text";
+    font-size: medium;
+}
+fieldset label{
+    font-family: rubik;
+    font-size: small;
+    color: #1f342a;
+}
+footer{
+    margin-top: 20px;
+    margin-bottom: 2rem;
+}
+
+.uploadBtn button{
+    background-color: var(--green);
+    padding: 5px 10px;
+    font-family: nunito;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px 1px rgba(64, 60, 67, .16);
+    display: block;
+    width: 100px;
+    margin: 10px auto;
+    font-weight: bold;
+    color: white;
+}

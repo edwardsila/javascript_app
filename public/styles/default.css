@@ -1,0 +1,43 @@
+@charset "utf-8";
+
+@import url(../fontawesome/css/all.css);
+
+@font-face {
+    font-family: nunito;
+    src: url(../fonts/nunito.ttf);
+}
+
+@font-face {
+    font-family: rubik;
+    src: url(../fonts/rubik.ttf);
+}
+
+@font-face {
+    font-family: quicksand;
+    src: url(../fonts/quicksand.ttf);
+}
+
+*{
+    box-sizing: border-box;
+    border: 0px;
+    padding: 0px;
+    margin: 0px;
+    outline: none;
+    list-style-type: none;
+}
+
+h1, h2, h3, h4, h5, h6, strong{
+    font-family: nunito;
+}
+
+a, div{
+    font-family: rubik;
+}
+
+p, span, button, small{
+    font-family: quicksand;
+}
+
+img{
+    max-width: 90vw;
+}

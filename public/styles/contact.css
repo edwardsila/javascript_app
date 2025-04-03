@@ -1,0 +1,169 @@
+@charset "utf8";
+
+@import url(./default.css);
+
+
+h1, h2, h3{
+    font-family: nunito;
+}
+
+nav{
+   display: grid;
+   align-items: center;
+   position: relative;
+}
+nav img{
+    height: 50px;
+}
+section{
+    margin-top: 2rem;
+}
+nav h1{
+    position: absolute;
+    width: 100%;
+    text-align: center;
+}
+
+#content-right, #content-left{
+    max-width: 500px;
+    height: 100%;
+    padding: 2rem 20px;
+    margin: 1rem 0px;
+}
+
+body{
+    width: fit-content;
+    margin: 20px auto;
+    background: url(../images/dot-background.png);
+    background-size: auto;
+}
+
+#content-right{
+    background: rgba(181, 181, 181, 0.25);
+    border: 1px dotted black;
+}
+
+.right-heading{
+    margin-bottom: 10px;
+}
+.right-heading p{
+    font-size: 80%;
+}
+
+.right-child{
+    padding: 10px 5px;
+    border: 1px dotted black;
+    margin: 10px 5px;
+}
+.right-child > h3{
+    display: grid;
+    width: fit-content;
+    grid-template-columns: 30px 1fr;
+}
+
+.right-child > div{
+    padding-left: 20px;
+}
+
+.right-child > p{
+    font-size: 80%;
+    color: rgb(99, 99, 99);
+    font-weight: 600;
+}
+
+.email{
+    margin-top: 5px;
+    font-size: 90%;
+}
+
+.right-foot{
+    padding: 5px;
+    margin-left: 20px;
+    width: fit-content;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+    font-size: 25px;
+}
+ a{
+    font-weight: bold;
+    color: black;
+    background-color: #add8e683;
+    padding: 0px 10px;
+    text-decoration: none;
+    border-radius: 5px;
+ }
+
+ a:has(i){
+    background-color: transparent;
+    padding: 0px;
+ }
+.fa-facebook{
+    color: #4267B2;
+}
+
+.fa-twitter{
+    color: #00acee;
+}
+
+.fa-instagram{
+    color: #e95950;
+}
+
+.fa-youtube{
+    color: red;
+}
+
+.fa-linkedin{
+    color: #0072b1;
+}
+
+.fa-whatsapp{
+    color: 	#25D366;
+}
+
+#content-left{
+    background: radial-gradient(82.2% 82.2% at 98% 100%, #ad89ff 0%, #e4d7ff 100%);
+    border: 1px dotted gray;
+}
+form{
+    width: 400px;
+    margin: 10px auto;
+}
+input, textarea{
+    padding: 5px;
+    width: 100%;
+    border-radius: 5px;
+    border: .5px solid #b997ff ;
+    background-color: #f3edff ;
+}
+
+textarea{
+    resize: none;
+}
+
+label{
+    display: block;
+    margin: 15px 0px;
+}
+
+button{
+    display: block;
+    padding: 10px;
+    text-align: center;
+    width: 200px;
+    background-color: #280078 ;
+    color: white;
+    border-radius: 5px;
+    border: none;
+    margin: 0px auto;
+    font-size: 16px;
+}
+
+@media screen and (min-width:1000px) {
+    #content{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+    }   
+}

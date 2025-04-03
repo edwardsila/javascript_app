@@ -1,0 +1,23 @@
+@import url('./default.css');
+:root{
+    --green: #1dbf73;
+}
+
+#header{
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 1rem;
+    align-items: center;
+    color: var(--green);
+    background-color: whitesmoke;
+    padding: 10px;
+}
+#header img{
+    cursor: pointer;
+    max-width: 20vw;
+}
+
+.header-right{
+    display: grid;
+    grid-template-columns: auto auto;
+}

@@ -1,0 +1,187 @@
+@charset "utf-8";
+
+@import url(./default.css);
+
+:root{
+    --green: #1dbf73;
+    --orange: #ffb71a;
+    --pink: #fe5858;
+    --greener:#73c59f;
+}
+
+.client-content{
+    padding: 30px 60px;
+}
+.up-actions{
+    display: flex;
+    justify-content: space-around;
+}
+.c-details2{
+    display: flex;
+    justify-content: space-around;
+}
+.browse-job{
+    padding: 10px;
+    border: 2px solid var(--green);
+    background-color: white;
+    border-radius: 15px;
+    margin: 5px;
+    cursor: pointer;
+}
+.post-job{
+    background-color: #1dbf73;
+    padding: 10px;
+    border-radius: 15px;
+    margin: 5px;
+    cursor: pointer;
+}
+.m-content{
+    display: flex;
+    justify-content: space-around;
+}
+.c-tasks-jobs{
+    min-width: 60vw;
+    margin: 5px 10px;
+    
+}
+.job-folder{
+    font-size: 60px;
+    color: var(--green);
+    margin: 0 auto;
+}
+.job-post{
+    padding: 10px;
+    border: 1px solid var(--green);
+    border-radius: 5px;
+}
+.posted-jobs{
+    padding: 15px;
+    margin: 5px auto;
+}
+.posted-jobs i{
+    text-align: center;
+    align-content: center;
+    margin-left: 45%;
+}
+.post-new{
+    padding: 15px;
+    margin: 5px auto;
+}
+.job-post-btn{
+    background-color: var(--green);
+    padding: 15px;
+    border: none;
+    color: white;
+    border-radius: 15px;
+    cursor: pointer;
+}
+.c-tasks{
+    border: 1px solid var(--green);
+    border-radius: 5px;
+    padding: 25px;
+    margin: 5px 10px;
+}
+.task-top{
+    margin-bottom: 15px;
+    padding: 5px;
+}
+.steps{
+    padding: 5px;
+    margin: 5px auto;
+    display: flex;
+    justify-content: space-around;
+    border-bottom: 1px solid var(--green);
+}
+.step-img{
+    padding: 5px;
+}
+.step-img i{
+    font-size: 50px;
+    color: #1dbf73;
+    padding: 5px;
+}
+.step-guide h4{
+    font-size: 14px;
+}
+.step-guide p{
+    font-size: 12px;
+}
+.guide-4{
+    border-bottom: none;
+}
+
+/* form job posting */
+
+.post-form{
+    margin: 20px auto;
+    top: 20px;
+    margin-top: 50px;
+    max-width: 1024px;
+    padding: 10px;
+    border-radius: 10px;
+}
+.post-form h3{
+    margin-left: 80px;
+    font-size: 25px;
+}
+#myForm{
+    margin: 0 auto;
+    padding: 15px;
+    width: 90%;
+}
+fieldset{
+    border-bottom: 1px solid var(--greener);
+    margin: 20px auto;
+    border-right: 1px solid var(--greener);
+    padding: 25px;
+    border-radius: 10px;
+}
+  fieldset label{
+    display: block;
+    padding: 5px;
+    margin: 5px;
+  }
+  fieldset input{
+    display: block;
+    padding: 15px;
+    width: 100%;
+    border-radius: 10px;
+    margin: 5px auto;
+    background-color: whitesmoke;
+  }
+  fieldset h3,p{
+    padding: 5px;
+    font-size: 14px;
+  }
+  textarea{
+    padding: 10px;
+    border: 1px solid var(--greener);
+    margin: 10px auto;
+    width: 95%;
+    border-radius: 10px;
+  }
+  input[type="file"]{
+    padding: 15px;
+    border-radius: 10px;
+    background-color: whitesmoke;
+    width: 100%;
+    margin: 10px auto;
+    border: 1px solid var(--greener);
+  }
+  ul li{
+    font-size: 12px;
+    padding: 5px;
+  }
+  .next, .submit{
+    padding: 15px 30px;
+    border: none;
+    border-radius: 8px;
+    background-color: var(--green);
+    margin: 5px;
+    cursor: pointer;
+  }
+  
+  fieldset:first-of-type {
+    display: block;
+  }
+  

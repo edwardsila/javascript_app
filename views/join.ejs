@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WorkHub Writers : Join Us</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="/styles/signup.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+</head>
+<body>
+    <nav>
+        <div id="nav-brand">
+            <div onclick="location.href='/'">
+                <img src="logo.svg" alt="" id="logo-image" >
+            </div>
+        </div>
+    </nav>
+   
+<section class="step" step="1">
+    <h1>Apologies</h1>
+    <p>
+        Sorry, you are trying to access some content that is exclusive to our registered members only!
+    </p>
+    <p>Kindly login or create an account to continue.</p>
+    <div class="abcd">
+        <div class="link" onclick="location.href='/login'">Login</div>
+        <div class="link" onclick="location.href='/signup'">Create an account</div>
+    </div>
+</section>
+<footer>
+   <small>WorkHub Writers &copy; <span class="year"></span></small>
+</footer>
+<style>
+    nav{
+        display: block;
+        text-align: center;
+    }
+    section.step{
+        border-color: transparent;
+        text-align: center;
+        display: grid;
+        align-items: center;
+        max-width: 500px;
+        margin: 0px auto;
+    }
+    h1{
+        text-align: center;
+    }
+
+    .abcd{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        width: fit-content;
+        margin: 1px auto;
+    }
+    .link{
+        padding: 7px 20px;
+        width: 100%;
+        border: 1px solid var(--green);
+        margin: 0px auto;
+        border-radius: 3px;
+        display: grid;
+        align-items: center;
+    }
+    .link:hover{
+        background-color: var(--green);
+        color: white;
+    }
+    a{
+        text-decoration: none;
+        font-weight: bold;
+    }
+    footer{
+        display: block;
+        text-align: center;
+    }
+</style>
+<script>
+    document.querySelector('.year').innerHTML = new Date().getFullYear()
+</script>
+</body>
+</html>

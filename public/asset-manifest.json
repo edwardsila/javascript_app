@@ -1,0 +1,35 @@
+{
+  "files": {
+    "main.css": "/static/css/main.ef19560f.css",
+    "main.js": "/static/js/main.ca286d35.js",
+    "static/js/787.dde20c4c.chunk.js": "/static/js/787.dde20c4c.chunk.js",
+    "static/media/fa-solid-900.ttf": "/static/media/fa-solid-900.2877d54f94f30c5d563c.ttf",
+    "static/media/fa-brands-400.ttf": "/static/media/fa-brands-400.13e40630e5866f777de8.ttf",
+    "static/media/fa-solid-900.woff2": "/static/media/fa-solid-900.bdb9e23299f9d1320a8b.woff2",
+    "static/media/fa-brands-400.woff2": "/static/media/fa-brands-400.7be2266f1be21c44ecd4.woff2",
+    "static/media/fa-regular-400.ttf": "/static/media/fa-regular-400.146404900f7550a9719d.ttf",
+    "static/media/writing-icon.jpg": "/static/media/writing-icon.0ddc76b887e995222318.jpg",
+    "static/media/fa-regular-400.woff2": "/static/media/fa-regular-400.8bedd7cfa43a6c358cdd.woff2",
+    "static/media/logo.svg": "/static/media/logo.23adf34f1a9c6b379847646b33c72787.svg",
+    "static/media/fa-v4compatibility.ttf": "/static/media/fa-v4compatibility.6c0a7b774ffa1cf0a059.ttf",
+    "static/media/webpage.svg": "/static/media/webpage.807d80fd70a3e74c4bc65fd738d69cad.svg",
+    "static/media/fa-v4compatibility.woff2": "/static/media/fa-v4compatibility.497d535001197a9c5b38.woff2",
+    "static/media/book.svg": "/static/media/book.ed47c08197f53cc2d9a26b7c0b6af299.svg",
+    "static/media/script.svg": "/static/media/script.e64daaaa9e1dcccabc9e12050f7dd80e.svg",
+    "static/media/article.svg": "/static/media/article.74a84164d8abcaf50024e2e27e289424.svg",
+    "static/media/ghost.svg": "/static/media/ghost.1d232d3cabbd2f7d94cfcb127f4f65a3.svg",
+    "static/media/translate.svg": "/static/media/translate.097116df1c8f4575a8d88f9c0a9abca5.svg",
+    "static/media/resume.svg": "/static/media/resume.0aaf4392fbc28dc047a113a552127152.svg",
+    "static/media/loader.svg": "/static/media/loader.47129400cabad547e15137ed95c17971.svg",
+    "static/media/edit.svg": "/static/media/edit.810312a6365a78baa9e91d9799f4deec.svg",
+    "static/media/product.svg": "/static/media/product.2891e7168f884879ffab6db1fba39d0f.svg",
+    "index.html": "/index.html",
+    "main.ef19560f.css.map": "/static/css/main.ef19560f.css.map",
+    "main.ca286d35.js.map": "/static/js/main.ca286d35.js.map",
+    "787.dde20c4c.chunk.js.map": "/static/js/787.dde20c4c.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ef19560f.css",
+    "static/js/main.ca286d35.js"
+  ]
+}

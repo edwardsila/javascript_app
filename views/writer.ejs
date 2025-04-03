@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Writer</title>
+    <script src="scripts/writer.js" defer></script>
+    <link rel="stylesheet" href="styles/writer.css">
+</head>
+<body>
+    <%- include('./fragments/account-check.ejs') %>
+    <nav>
+        <div id="nav-logo">
+            <img src="/logo.svg" alt="" id="logo-image">
+        </div>
+        <div id="nav-search">
+            <div id="nav-search-bar">
+                <label class="magnifying-glass-container" for="search">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </label>
+                <div id="nav-input-container">
+                    <input type="text" id="search" placeholder="Search for a job">
+                </div>
+                <div id="nav-search-btn">
+                    Search
+                </div>
+            </div>
+        </div>
+        <div id="nav-profile">
+            <div id="notification">
+                <i class="fa-solid fa-bell"></i>
+            </div>
+            <div id="nav-dp">
+                <i class="fa-solid fa-user"></i>
+            </div>
+        </div>
+    </nav>
+    <header>
+        <div id="header-profile">
+            <div id="header-dp">
+                <img src="/images/dp-1.png" alt="" class="writer-dp">
+            </div>
+            <div class="writer-name"></div>
+            <p class="writer-description">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque, ipsum?
+            </p>
+        </div>
+        <div id="profile-status">
+            <p>Profile Completeness</p>
+            <progress value="50" max="100">
+                <span>50%</span>
+            </progress>
+            <div class="add-progress">
+                <div><i class="fa-solid fa-star color-green"></i></div>
+                <div>
+                    <p>Keep your skills up to date</p>
+                    <p class="color-green">Add new skill</p>
+                </div>
+            </div>
+        </div>
+        <div class="ballance-details">
+            <p><span class="color-green">Available</span> <span>account ballance</span></p>
+            <p>$<span class="acc-bal"></span> <span class="currency">USD</span></p>
+        </div>
+        <div class="job-history color-green">
+            <h3>JOBS</h3>
+            <ul>
+                <li>1 completed job</li>
+                <li>3 in progress</li>
+            </ul>
+        </div>
+    </header>
+    <section id="content">
+        <div class="welcome-card">
+            <h3 class="date"></h3>
+            <h1>Welcome, <span class="writer-name"></span>!</h1>
+        </div>
+        <div id="content-search">
+            <div id="body-search-bar">
+                <div>
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </div>
+                <input type="text" name="body-search" id="body-search" placeholder="Search jobs here...">
+                <div id="content-search-btn">
+                    Search
+                </div>
+                
+            </div>
+            <div class="recent-searches">
+                <span class="bold">Recent searches:</span>
+                <div class="recent-searches">
+                    <span class="search-history">
+                        book review
+                    </span>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

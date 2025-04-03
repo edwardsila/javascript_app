@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Post a Job</title>
+    <link rel="stylesheet" href="../styles/post-job.css">
+  </head>
+  <body>
+    <%- include('./fragments/account-check.ejs') %>
+    <%- include('./fragments/verificationCheck.ejs') %>
+    <form id="post-job-form">
+      <label for="job-title">Job Title:</label>
+      <input type="text" id="job-title" name="job-title"><br><br>
+
+      <label for="job-description">Job Description:</label><br>
+      <textarea id="job-description" name="job-description" rows="10" cols="50"></textarea><br><br>
+
+      <label for="job-skills">Skills Required:</label>
+      <input type="text" id="job-skills" name="job-skills"><br><br>
+      <div id="skills-container">
+      <div class="skill">
+        <input type="text" name="skill" placeholder="Enter a skill">
+        <button type="button" class="remove-skill-btn">Remove Skill</button>
+      </div>
+      </div>
+      <button type="button" id="add-skill-btn">Add Skill</button>
+      <label for="job-budget">Budget:</label>
+      <input type="number" id="job-budget" name="job-budget"><br><br>
+
+      <label for="job-duration">Duration:</label>
+      <input type="number" id="job-duration" name="job-duration"> days<br><br>
+
+      <input type="submit" value="Post Job">
+    </form>
+
+    <script>
+      const form = document.getElementById('post-job-form');
+
+      form.addEventListener('submit', (event) => {
+        event.preventDefault(); // Prevent form submission
+
+        // Collect form data
+        const title = document.getElementById('job-title').value;
+        const description = document.getElementById('job-description').value;
+        const skills = document.getElementById('job-skills').value;
+        const budget = document.getElementById('job-budget').value;
+        const duration = document.getElementById('job-duration').value;
+
+        // Construct job object
+        const job = {
+          title: title,
+          description: description,
+          skills: skills,
+          budget: budget,
+          duration: duration
+        };
+
+        // Send job object to server using AJAX or fetch API
+        fetch('/post-job', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(job)
+        })
+        .then(response => {
+          if (response.ok) {
+            alert('Job posted successfully!');
+            form.reset(); // Reset form
+          } else {
+            alert('Job post failed.');
+          }
+        })
+        .catch(error => {
+          alert('Error posting job: ' + error);
+        });
+      });
+
+      const addSkillBtn = document.getElementById("add-skill-btn");
+const skillsContainer = document.getElementById("skills-container");
+
+// Function to create a new skill input field and "Remove Skill" button
+function createSkillInput() {
+  const skillDiv = document.createElement("div");
+  skillDiv.classList.add("skill");
+
+  const skillInput = document.createElement("input");
+  skillInput.type = "text";
+  skillInput.name = "skill";
+  skillInput.placeholder = "Enter a skill";
+
+  const removeSkillBtn = document.createElement("button");
+  removeSkillBtn.type = "button";
+  removeSkillBtn.classList.add("remove-skill-btn");
+  removeSkillBtn.textContent = "Remove Skill";
+  removeSkillBtn.addEventListener("click", () => {
+    skillDiv.remove();
+  });
+
+  skillDiv.appendChild(skillInput);
+  skillDiv.appendChild(removeSkillBtn);
+
+  return skillDiv;
+}
+
+// Add a new skill input field and "Remove Skill" button when "Add Skill" button is clicked
+addSkillBtn.addEventListener("click", () => {
+  const newSkillInput = createSkillInput();
+  skillsContainer.appendChild(newSkillInput);
+});
+
+    </script>
+    <script>
+        const skills = ["HTML", "CSS", "JavaScript", "React", "Node.js", "MongoDB"];
+
+const skillsInput = document.getElementById("skills-input");
+const skillsList = document.getElementById("skills-list");
+
+skillsInput.addEventListener("keyup", (event) => {
+  if (event.key === "Enter") {
+    const skill = event.target.value.trim();
+    if (skill) {
+      addSkill(skill);
+      event.target.value = "";
+    }
+  }
+});
+
+function addSkill(skill) {
+  if (!skills.includes(skill)) {
+    return;
+  }
+  const li = document.createElement("li");
+  li.textContent = skill;
+  const removeButton = document.createElement("button");
+  removeButton.textContent = "X";
+  removeButton.addEventListener("click", () => {
+    li.remove();
+  });
+  li.appendChild(removeButton);
+  skillsList.appendChild(li);
+}
+
+    </script>
+    <div id="skills-container">
+        <label for="skills">Skills:</label>
+        <input type="text" id="skills-input">
+        <ul id="skills-list"></ul>
+      </div>
+      
+  </body>
+</html>

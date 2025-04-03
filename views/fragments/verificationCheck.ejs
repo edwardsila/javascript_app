@@ -1,0 +1,41 @@
+
+
+<div id="verification-loader">
+    <div  class="verification-loader"></div>
+</div>
+<style>
+    #verification-loader{
+        position: fixed;
+        height: 100vh;
+        width: 100vw;
+        display: grid;
+        align-items: center;
+        text-align: center;
+        z-index: 1000;
+        top: 0px;
+        right: 0px;
+        background: none white;
+    }
+    .verification-loader {
+        height: 200px;
+        width: 200px;
+        background: url(/images/loader.svg);
+        margin: 0px auto;
+    }
+
+</style>
+<script>
+    fetch('/account/verification', {
+        method: 'GET'
+    }).then(res=>{
+        return res.json();
+    }).then(d=>{
+        if(!d || !d.verification){
+            location.href ='/pro-only'
+        }else{
+            document.getElementById('verification-loader').style.display = 'none'
+        }
+    }).catch(err=>{
+        location.href ='/pro-only'
+    })
+</script>

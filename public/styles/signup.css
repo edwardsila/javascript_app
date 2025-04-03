@@ -1,0 +1,178 @@
+@charset "utf-8";
+
+@import url(./default.css);
+
+:root{
+    --green: #1dbf73;
+    --orange: #ffb71a;
+    --pink: #fe5858;
+}
+.hidden{
+    display: none !important;
+}
+*{
+    outline-color: transparent;
+    margin: 0px;
+    padding: 0px;
+}
+html{
+    height: 100%;
+}
+body{
+    background-color: whitesmoke;
+    display: grid;
+    grid-template-rows: 1fr 15fr 4fr;
+    height: 100%;
+}
+body::-webkit-scrollbar{
+    display: none;
+}
+nav{
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    text-align: center;
+}
+#steps{
+    display: grid;
+    align-items: center;
+   
+}
+.step{
+    width: fit-content;
+    margin: 0px auto;
+    max-width: 90vw;
+    padding: 30px;
+    border: 1px dotted var(--orange);
+    border-radius: 10px;
+}
+.step#one img{
+    width: 70px;
+    border-radius: 50px;
+}
+
+.step#one{
+    
+    text-align: center;
+}
+
+.step-one-options{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.step-one-option{
+    text-align: left;
+    max-width: 250px;
+    margin: 10px;
+    border: 2px solid rgb(223, 223, 223);
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.step-one-option:hover{
+    border-color: var(--green);
+}
+.one-top{
+    display: grid;
+    grid-template-columns: 1fr auto;
+    margin-bottom: 15px;
+}
+.selected{
+    height: 30px;
+    width: 30px;
+    display: grid;
+    align-items: center;
+    text-align: center;
+    border: 1px solid gray;
+    color: white;
+    border-radius: 50%;
+    font-size: 20px;
+}
+
+.next{
+    padding: 20px;
+}
+
+.next button{
+    background-color: var(--green);
+    color: white;
+    padding: 5px 20px;
+    border-radius: 5px;
+    font-size: large;
+}
+.next button:disabled{
+    background-color: transparent;
+    border: 1px solid gray;
+    color: gray;
+}
+.link{
+    font-size: small;
+}
+
+footer{
+    display: grid;
+    grid-template-rows: 1fr 2fr;
+}
+
+.steps-progress{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+    width: fit-content;
+    margin: 1px auto;
+}
+
+.step-count{
+    width: 50px;
+    height: 50px;
+    display: grid;
+    text-align: center;
+    align-items: center;
+    background-color: gray;
+    border-radius: 25px;
+}
+
+.step-count.active{
+    color: white;
+    background-color: var(--orange);
+}
+
+.step-count.done{
+    color: white;
+    background-color: var(--green);
+}
+#step-info {
+    text-align: center;
+    font-size: large;
+}
+.information-form{
+    padding-top: 10px;
+}
+.information-form label{
+    display: block;
+    margin: 10px 0px;
+}
+.information-form p{
+    color: var(--green);
+}
+.information-form label input{
+    width: 100%;
+    background-color: whitesmoke;
+    border-bottom: .5px dotted gray;
+}
+.next{
+    text-align: center;
+}
+#two .next button{
+    font-size: 16px;
+}
+
+.pwd-message{
+    font-size: small;
+    padding: 10px 0px;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 15px;
+}
+

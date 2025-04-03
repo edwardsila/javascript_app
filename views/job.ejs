@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Job | <%= job.title %></title>
+    <meta name="description"
+        content="Get high-quality writing services from expert writers. WorkHub Writers connects writers with clients for all your writing needs.">
+    <meta name="keywords" content="writing services, content creation, copywriting, freelance writing, blog writing">
+    <meta property="og:title" content="WorkHub Writers - Professional Writing Services">
+    <meta property="og:description"
+        content="Get high-quality writing services from expert writers. WorkHub Writers connects writers with clients for all your writing needs.">
+    <meta property="og:image" content="https://workhubwriters.com/minimisedblack.png">
+    <meta property="og:url" content="https://workhubwriters.com">
+    <meta name="twitter:title" content="WorkHub Writers - Professional Writing Services">
+    <meta name="twitter:description"
+        content="Get high-quality writing services from expert writers. WorkHub Writers connects writers with clients for all your writing needs.">
+    <meta name="twitter:image" content="https://workhubwriters.com/minimisedblack.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="/styles/index.css">
+    <link rel="stylesheet" href="/styles/jobs.css">
+    <link rel="stylesheet" href="/styles/job.css">
+    <script src="/scripts/job.js" defer></script>
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <script src="/assets/js/momentjs.js"></script>
+</head>
+
+<body>
+    <section id="header">
+        <div class="header-left">
+            <img src="/logo.svg" alt="" onclick="location.href='/'" title="Back to home page">
+        </div>
+        <div class="header-right">
+            <h3>Job details</h3>
+            <p><a href="/jobs">Back to jobs</a></p>
+        </div>
+    </section>
+    <section id="job">
+        <h1><%= job.title %></h1>
+        <div class="description">
+            <h3>Description</h3>
+            <p><%= job.description %></p>
+        </div>
+        <div class="client-info">
+            <div class="client-name">
+                Posted by <span class="client"><%= client.name %></span>,
+            </div>
+            <div class="date-posted">
+                <span class="createdAt" data="<%= job.createdAt %>"></span>
+            </div>
+        </div>
+        <div class="essentials">
+            <div class="essential price">
+                <span class="key">
+                    <i class="fas fa-money-bills" title="Budget of the job"></i>
+                </span>
+                <span class="value">$<%= job.price %></span>
+            </div>
+            <div class="essential duration">
+               <span class="key">
+                <i class="fas fa-clock" title="Time to complete job"></i>
+                </span>
+               <span class="value"> <%= job.timeExpected %></span>
+            </div>
+            <div class="essential expertise">
+                <span class="key">
+                    <i class="fas fa-user-tag" title="Expertise level"></i>
+                </span>
+                <span class="value"><%= job.expertiseLevel %></span>
+            </div>
+        </div>
+        <div class="keywords-container">
+        <div class="keywords">
+            <strong>Keywords</strong>
+            <% job.keywords.filter(k=>k.length >2).map(keyword=>{ %>
+                <div class="keyword"><%= keyword %></div>
+            <% }) %>
+        </div>
+        </div>
+        <div class="button">
+            <button onclick="location.href='/proposal/send?id=<%= job._id %>'">Apply for this job</button>
+        </div>
+    </section>
+    <section id="jobs-container">
+       <div class="jobs-category">
+        <div class="query-container">
+            <h3>More jobs like: <span class="query"><%= job.title %></span></h3>
+            <div><i class="fas fa-angle-right"></i></div>
+        </div>
+        <% jobs.map(({title, description, price, createdAt, _id})=>{ %>
+            <div class="card" onclick="location.href='/job/id/<%= _id %>'">
+                <h1 class="heading card-title" ><%= title %></h1>
+                <p class="card-desc"><%= description %></p>
+                <h4 class="card-price"><i class="fa-solid fa-tags"></i><span>$ <%= price %></span></h4>
+                <p class="card-date"><i class="fa-solid fa-calendar-days"></i><span class="createdAt" data="<%= createdAt %>"> </span></p>
+            </div>
+        <% }) %>
+       </div>
+        <div class="jobs-category">
+            <div class="query-container">
+                <h3>More jobs from <span class="query"><%= client.name %></span></h3>
+                <div><i class="fas fa-angle-right"></i></div>
+            </div>
+            <% clientJobs.map(({title, description, price, createdAt, _id})=>{ %>
+                <div class="card" onclick="location.href='/job/id/<%= _id %>'">
+                    <h1 class="heading card-title" ><%= title %></h1>
+                    <p class="card-desc"><%= description %></p>
+                    <h4 class="card-price"><i class="fa-solid fa-tags"></i><span>$ <%= price %></span></h4>
+                    <p class="card-date"><i class="fa-solid fa-calendar-days"></i><span class="createdAt" data="<%= createdAt %>"> </span></p>
+                </div>
+            <% }) %>
+        </div>
+    </section>
+    <footer>
+        <div class="links">
+            <div class="link-container">
+                <div class="link">
+                    <h2>About Us</h2>
+                </div>
+                <div class="link"><a class="link-title">WorkHub Community</a></div>
+                <div class="link"><a href="/terms-conditions"> Terms of Service</a></div>
+                <div class="link"><a class="link-title" href="/contact">Feedback</a></div>
+    
+            </div>
+            <div class="link-container">
+                <div class="link">
+                    <h2>Support</h2>
+                </div>
+                <div class="link"><a href="/contact">Help and Support</a></div>
+                <div class="link"><a class="link-title">Trust & Safety</a></div>
+                <div class="link"><a class="link-title">Blog</a></div>
+    
+            </div>
+            <div class="link-container">
+                <div class="link">
+                    <h2>More from Us</h2>
+                </div>
+                <div class="link"><a class="link-title">Our Workspace</a></div>
+                <div class="link"><a class="link-title" href="/dashboard/referrals">Referrals</a></div>
+                <div class="link">
+                    <p class="link-title"><a href="/training">Apply for training</a></p>
+                </div>
+            </div>
+        </div>
+        <div class="socials">
+            <div></div>
+            <div class="social-icons">
+                <div class="social-media"><i class="fa-brands fa-facebook"></i></div>
+                <div class="social-media"><i class="fa-brands fa-x-twitter"></i></div>
+                <div class="social-media"> <a href="https://instagram.com/workhub_writers" target="_blank"><i
+                            class="fa-brands fa-instagram"></i></a></div>
+                <div class="social-media"><a href="https://www.tiktok.com/@workhubwriters" target="_blank"><i
+                            class="fa-brands fa-tiktok"></i></a></div>
+            </div>
+        </div>
+        <hr>
+        <center><small>© WorkHub Writers <span class="year"></span></small></center>
+    </footer>
+</body>
+<script >
+    document.querySelectorAll('.createdAt').forEach(d=>{
+        let date = d.getAttribute('data');
+        d.innerText = moment(date).fromNow();
+    })
+</script>
+</html>

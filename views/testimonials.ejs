@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Testimonials Section</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <style>
+        .testimonials-section {
+            background-color: #f8f9fa;
+            padding: 50px 0;
+            text-align: center;
+        }
+        
+        .testimonials-title {
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        
+        .testimonials-text {
+            font-weight: bold;
+            font-size: 30px;
+            color: #28a745;
+            margin-bottom: 30px;
+        }
+        
+        .testimonial-card {
+            border: none;
+            border-radius: 20px;
+            padding: 20px;
+            background-color: #e7fae4;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .testimonial-image {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 10px;
+            margin-left: 40%;
+        }
+        
+        .testimonial-quote {
+            font-size: 18px;
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+        
+        .testimonial-name {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .testimonial-title {
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .carousel-control-prev-icon,
+        .carousel-control-next-icon {
+            fill: rgb(89, 216, 64);
+            /* Change to your desired color */
+        }
+        
+        .rating-stars {
+            color: gold;
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+        
+        .rating {
+            margin-right: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <section class="testimonials-section">
+        <div class="container">
+            <h2 class="testimonials-title">Testimonials</h2>
+            <p class="testimonials-text">What clients say</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae semper velit, nec sagittis elit. Nullam eu neque vitae lectus fringilla hendrerit sed id diam. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia
+                curae; Ut dapibus est nec diam placerat, eu aliquet tellus hendrerit. Nulla facilisi. Curabitur sagittis fringilla maximus.</p>
+
+            <div id="testimonial-carousel" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#testimonial-carousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#testimonial-carousel" data-slide-to="1"></li>
+                    <li data-target="#testimonial-carousel" data-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="row">
+                            <div class="col-lg-4 col-md-6 mb-4">
+                                <div class="card testimonial-card">
+                                    <img src="images/samburu.jpeg" alt="Profile Image" class="testimonial-image">
+                                    <p class="testimonial-quote">"WorkHub Writers provides an amazing platform for writers to grow and succeed. Love being part of their community!"</p>
+                                    <div class="rating-stars">
+                                        <span class="rating">&#9733;</span>
+                                        <span class="rating">&#9733;</span>
+                                        <span class="rating">&#9733;</span>
+                                        <span class="rating">&#9733;</span>
+                                        <span class="rating">&#9733;</span>
+                                    </div>
+                                    <p class="testimonial-name">Samantha O</p>
+                                    <p class="testimonial-title">WRITER</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 mb-4">
+                                <div class="card testimonial-card">
+                                    <img src="images/j.jpeg" alt="Profile Image" class="testimonial-image">
+                                    <p class="testimonial-quote">"WorkHub Writers has been a game-changer for my career. Flexible, fair, and full of opportunities. Highly recommend!"</p>
+                                    <div class="rating-stars">
+                                        <span class="rating">&#9733;</span>
+                                        <span class="rating">&#9733;</span>
+                                        <span class="rating">&#9733;</span>
+                                    </div>
+                                    <p class="testimonial-name">Michael K</p>
+                                    <p class="testimonial-title">WRITER</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 mb-4">
+                                <div class="card testimonial-card">
+                                    <img src="images/samburu.jpeg" alt="Profile Image" class="testimonial-image">
+                                    <p class="testimonial-quote">"Working with WorkHub Writers has been an incredible journey. They provide a platform that fosters creativity, professionalism, and growth. The support and guidance I've received have been invaluable, allowing me to
+                                        excel in my writing career."</p>
+                                    <div class="rating-stars">
+                                        <span class="rating">&#9733;</span>
+                                        <span class="rating">&#9733;</span>
+                                        <span class="rating">&#9733;</span>
+                                        <span class="rating">&#9733;</span>
+                                    </div>
+                                    <p class="testimonial-name">David M</p>
+                                    <p class="testimonial-title">WRITER</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row">
+                            <div class="col-lg-4 col-md-6 mb-4">
+                                <div class="card testimonial-card">
+                                    <img src="images/25 Rare Pictures of Fidel Castro.jpeg" alt="Profile Image" class="testimonial-image">
+                                    <p class="testimonial-quote">"WorkHub Writers has been a game-changer for my writing career. The platform provides a seamless experience, great support, and numerous opportunities to showcase my skills. I'm grateful for the collaborative and empowering
+                                        environment they offer."</p>
+                                    <div class="rating-stars">
+                                        <span class="rating">&#9733;</span>
+                                        <span class="rating">&#9733;</span>
+                                        <span class="rating">&#9733;</span>
+                                        <span class="rating">&#9733;</span>
+                                    </div>
+                                    <p class="testimonial-name">Sarah V</p>
+                                    <p class="testimonial-title">WRITER</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 mb-4">
+                                <div class="card testimonial-card">
+                                    <img src="images/samburu.jpeg" alt="Profile Image" class="testimonial-image">
+                                    <p class="testimonial-quote">"WorkHub Writers exceeded my expectations with their exceptional service. Highly recommended!"</p>
+                                    <div class="rating-stars">
+                                        <span class="rating">&#9733;</span>
+                                        <span class="rating">&#9733;</span>
+                                        <span class="rating">&#9733;</span>
+                                    </div>
+                                    <p class="testimonial-name">Emily A</p>
+                                    <p class="testimonial-title">CLIENT</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 mb-4">
+                                <div class="card testimonial-card">
+                                    <img src="images/25 Rare Pictures of Fidel Castro.jpeg" alt="Profile Image" class="testimonial-image">
+                                    <p class="testimonial-quote">"Working with WorkHub Writers has been an incredible journey. They provide a platform that fosters creativity, professionalism, and growth. The support and guidance I've received have been invaluable, allowing me to
+                                        excel in my writing career."</p>
+                                    <div class="rating-stars">
+                                        <span class="rating">&#9733;</span>
+                                        <span class="rating">&#9733;</span>
+                                        <span class="rating">&#9733;</span>
+                                        <span class="rating">&#9733;</span>
+                                        <span class="rating">&#9733;</span>
+                                    </div>
+                                    <p class="testimonial-name">James C</p>
+                                    <p class="testimonial-title">CLIENT</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a class="carousel-control-prev" href="#testimonial-carousel" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#testimonial-carousel" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+            <p>Welcome to <a href="">WeWork Writers</a></p>
+        </div>
+    </section>
+
+
+    <!-- Include Bootstrap JS at the end of the body section -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>

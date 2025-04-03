@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verification Pay | WorkHub Writers</title>
+</head>
+
+<body>
+    <% console.log(user); %>
+    <span id="email" style="display: none;"><%= user.email %></span>
+    <section id="header">
+        <div class="header-left">
+            <img src="/logo.svg" alt="" onclick="location.href='/'" title="Back to home page">
+        </div>
+        <div class="header-right">
+            <h3>Choose Payment Method</h3>
+            <p><a href="/jobs">Back to jobs</a></p>
+        </div>
+    </section>
+    <section id="content">
+        <div class="container">
+            <button id="scroll-left-button" class="left"><i class="fas fa-angle-left"></i></button>
+            <div class="pay-method">
+                <div class="brand-img paypal" id="paystack-pay">
+                    <img src="https://cdn-icons-png.freepik.com/512/4108/4108843.png" alt="" class="paypal">
+                </div>
+            </div>
+            <div class="pay-method" onclick="location.href='/payment/mpesa'">
+                <div class="brand-img">
+                    <img src="/images/mpesa-logo.png" alt="">
+                </div>
+            </div> 
+            <button id="scroll-right-button" class="right"><i class="fas fa-angle-right"></i></button>
+        </div>
+    </section>
+    <style>
+        @import url('/styles/default.css');
+
+        :root {
+            --green: #1dbf73;
+        }
+        *{
+            transition: 400ms ease;
+        }
+        body {
+            display: grid;
+            height: 100vh;
+            grid-template-rows: auto 1fr;
+        }
+        ::-webkit-scrollbar{
+            display: none;
+        }
+        #header {
+            display: grid;
+            grid-template-columns: auto auto;
+            gap: 1rem;
+            align-items: center;
+            color: var(--green);
+            background-color: whitesmoke;
+            padding: 10px;
+        }
+
+        #header img {
+            cursor: pointer;
+            max-width: 20vw;
+        }
+
+        .header-right {
+            display: grid;
+            grid-template-columns: auto auto;
+        }
+        #content{
+            max-width: 100vw;
+            overflow-x: scroll;
+            white-space: nowrap;
+        }
+        .container {
+           white-space: nowrap;
+            margin: 0px auto;
+            display: flex;
+            align-items: center;
+            overflow-x: scroll;
+            height: 100%;
+        }
+        
+        .container img {
+            width: 50%;
+        }
+        .container button{
+            position: absolute;
+            top: calc(50% + 40px);
+            font-size: x-large;
+            padding: 5px 10px;
+            background-color: var(--green);
+            color: white;
+            font-weight: bold;
+            border-radius: 4px;
+        }
+
+        button.right{
+            right: 10px;
+        }
+        button.left{
+            left: 10px;
+        }
+        .pay-method {
+            padding: 1px ;
+            border-radius: 5px;
+            margin: 0px auto;
+            padding: 0px calc(50vw - 100px);
+        }
+
+        .brand-img{
+            
+            background-color: whitesmoke;
+            box-shadow: 0 2px 5px 1px rgba(64, 60, 67, .16);
+            height: 100%;
+            padding: 5px;
+            border-radius: 5px;
+        }
+
+        .brand-img img{
+            width: 200px;
+            display: block;
+            margin: 0px auto;
+        }
+
+    </style>
+    <script>
+        // Get the container element and scroll buttons
+        const container = document.querySelector('.container');
+        const scrollLeftButton = document.getElementById('scroll-left-button');
+        const scrollRightButton = document.getElementById('scroll-right-button');
+
+        // Add click event listeners to scroll buttons
+        scrollLeftButton.addEventListener('click', () => {
+            container.scrollLeft -= container.scrollWidth /2; // You can adjust the scroll distance
+        });
+
+        scrollRightButton.addEventListener('click', () => {
+            container.scrollLeft += container.scrollWidth/2; // You can adjust the scroll distance
+        });
+
+        (()=>{
+            const payStackButton = document.getElementById('paystack-pay');
+
+            payStackButton.addEventListener('click', ()=>{
+                location.href = "https://paystack.com/pay/workhub-verify";
+            })
+            
+        })()
+    </script>
+</body>
+
+</html>

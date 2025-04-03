@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>payment</title>
+    <link rel="stylesheet" href="/styles/payment.css">
+</head>
+<body>
+    
+    <nav>
+        <div class="company-logo">
+            <img src="/logo.svg" alt="" onclick="location.href='/'">
+            <h2>Activate Account</h2>
+        </div>
+    </nav>
+    <section>
+        <div class="make-pay">
+            
+            <form action="#" class="payment-acc">
+                <fieldset>
+                    <legend>
+                        <h1 class="make-mpesa">Make M-Pesa Payment</h1>
+                    </legend>
+                    <h4><i class="fa-solid fa-user"></i> <span class="account-username"><%= user.name %></span></h4>
+                    <p><i class="fa-solid fa-envelope"></i> <span class="user-email"><%= user.email %></span></p>
+                    <label for="tel">M-Pesa Number :
+                        <input type="tel" name="phone" id="phone" placeholder="Enter Phone Number to make payment." value="<%= user.phone %>" required>
+                    </label>
+                    <input type="submit" value="Make M-Pesa Payment" class="submit-payment">
+                </fieldset>
+                    <div> <i class="fa-solid fa-circle-info"></i> The amount to pay is Ksh. <%= amount %> <% if(offer){ %>
+                        <%= `on a 20% offer` %>
+                    <% } %></div>
+                    <p>Not ready to complete your payment now?</p>
+                    <p>Continue to our <a href="/jobs">listed jobs</a></p>
+            </form>
+        </div>
+    </section>
+    <section class="hidden">
+        <div class="complete-payment">
+            <h1>If you have completed the payment.</h1>
+            <button class="pay-complete">Click Here </button>
+        </div>
+    </section>
+    <div id="accountId" style="display: none;"><%= user._id %></div>
+    <div id="accessKey" style="display: none;"><%= user.accessKey %></div>
+    <script>
+        
+        (()=>{
+            
+
+            document.forms[0].addEventListener('submit', (e)=>{
+                e.preventDefault();
+                const formData = new FormData(document.forms[0]);
+            
+                const myHeader = new Headers()
+                myHeader.append("user", accountId.innerText)
+                myHeader.append("key",accessKey.innerText)
+
+                formData.append("amount",1);
+            
+                const requestOptions = {
+                    method: "POST",
+                    headers: myHeader,
+                    body: formData,
+                    redirect: "follow"
+                }
+                
+                document.forms[0].innerHTML = '<img src="../images/loader.svg" alt="" />'
+                fetch('/mpesa/start',requestOptions)
+                .then(response =>{
+                    return response.json()
+                })
+                .then(result =>{
+                    localStorage.setItem("m-pesa",JSON.stringify(result));
+                    step2()
+                })
+                .catch(e =>{
+                    console.log(e);
+                })
+            })
+
+            const sections = document.querySelectorAll('section');
+
+            function step2 (){
+                sections.forEach(e =>{
+                    e.classList.toggle('hidden');
+                })
+            }
+            document.querySelector('.pay-complete').addEventListener('click',async (e)=>{
+                const payId = JSON.parse(localStorage.getItem('m-pesa'))['payment']['_id'];
+                sections[1].innerHTML='<img src="../images/loader.svg" alt="" />'
+                const raw = await fetch('/mpesa/manualUpdate/'+ payId)
+                const verification = await raw.json()
+
+                if(raw.ok){
+                    localStorage.setItem('verification', JSON.stringify(verification));
+                    alert('Verification was a success')
+                }else{
+                    alert(`an error occurred : 
+
+                    ${verification.error() || 'Failed to verify'}
+
+                    You will try again another time`)
+                }
+                location.href = '/';
+                
+            })
+        })()
+
+        
+    </script>
+</body>
+</html>
