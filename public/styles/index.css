@@ -3,9 +3,9 @@
 @import url(./default.css);
 
 :root{
-    --green: #1dbf73;
-    --orange: #ffb71a;
-    --pink: #fe5858;
+    --blue: #007bff;
+    --yellow: #ffcc00;
+    --red: #ff4d4d;
 }
 .hidden{
     display: none !important;
@@ -62,7 +62,7 @@ nav img{
 
     padding:  5px;
     border-radius: 5px;
-    background-color: var(--green);
+    background-color: var(--blue);
     color: white;
 }
 
@@ -105,7 +105,7 @@ nav img{
     display: none;
     padding: 0;
     margin: 0;
-    background-color: var(--green);
+    background-color: var(--blue);
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
     z-index: 20;
   }
@@ -117,7 +117,7 @@ nav img{
     left: calc(30% - 10px);
     width: 10px;
     height: 10px;
-    background-color: var(--green);
+    background-color: var(--blue);
     rotate: 45deg;
   }
   
@@ -136,7 +136,7 @@ nav img{
   }
   
   .dropdown-menu a:hover {
-    background-color: var(--green);
+    background-color: var(--blue);
     color: white;
   }
  
@@ -305,10 +305,10 @@ nav img{
 
 
 .pink {
-    color: var(--pink);
+    color: var(--red);
 }
 .dot{
-    color: var(--green);
+    color: var(--blue);
     font-size: 20px;
 }
 
@@ -325,7 +325,7 @@ nav img{
     width: 100%;
 }
 #header-search-btn{
-    background-color: var(--green);
+    background-color: var(--blue);
     height: 100%;
     display: grid;
     align-items: center;
@@ -348,7 +348,7 @@ nav img{
 
 .banner-container{
     border-radius: 5px;
-    background-color: var(--green);
+    background-color: var(--blue);
     text-align: center;
     padding: 40px 10px;
     color: white;
@@ -464,7 +464,7 @@ article.qa{
     display: grid;
     grid-template-columns: 1fr auto;
     gap: 10px;
-    border-bottom: 1px dotted var(--green);
+    border-bottom: 1px dotted var(--blue);
     padding: 10px;
     max-width: 700px;
     margin: 10px;
@@ -510,7 +510,7 @@ a:visited{
     color: #030303;
 }
 .service:hover{
-    background-color: var(--orange);
+    background-color: var(--yellow);
 }
 .link-container{
     margin: 20px;
@@ -545,7 +545,7 @@ a:visited{
     }
 }
 footer{
-    background-color: var(--green);
+    background-color: var(--blue);
     color: white;
     padding: 2rem;
     font-size: large;
