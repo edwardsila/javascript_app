@@ -1,0 +1,29 @@
+:root {
+    --blue: #007bff; /* Main blue color */
+    --light-blue: #e7f1ff; /* Light blue for backgrounds */
+    --dark-blue: #0056b3; /* Darker blue for hover effects */
+    --yellow: #ffc107; /* Main yellow color */
+    --light-yellow: #fff3cd; /* Light yellow for backgrounds */
+    --dark-yellow: #c69500; /* Darker yellow for hover effects */
+    --red: #dc3545; /* Main red color */
+    --light-red: #f8d7da; /* Light red for backgrounds */
+    --dark-red: #c82333; /* Darker red for hover effects */
+    --gray: #62646a; /* Keep gray if needed */
+    --light-gray: #f5f5f5; /* Keep light gray if needed */
+    --border-color: #e4e5e7; /* Keep border color if needed */
+}
+
+/* Additional styles can be added here */
+
+
+button {
+    background: var(--blue);
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.card {
+    border: 1px solid var(--border-color);
+}
