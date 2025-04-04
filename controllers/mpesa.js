@@ -7,7 +7,7 @@ const axios = require('axios')
 const getAmount = require('../utils/getAmount').getAmount;
 async function pay(phone, amount, name){
     try {
-        
+
         const data = JSON.stringify({
           phone, amount:getAmount(), 'Order_Id':123, name
         })
@@ -16,7 +16,7 @@ async function pay(phone, amount, name){
           method: 'POST',
           maxBodyLength: Infinity,
           url: 'https://workhubwriters.com/mpesa/stkPush',
-          headers: { 
+          headers: {
             'Content-Type': 'application/json'
           },
           data : data
@@ -32,8 +32,8 @@ async function pay(phone, amount, name){
 }
 
 /**
- * 
- * @param {String} phone 
+ *
+ * @param {String} phone
  * @returns {String}
  */
 const formatPhone = function (phoneNumber) {
@@ -54,13 +54,13 @@ const formatPhone = function (phoneNumber) {
 const initPay = async (req, res) => {
     try {
 
-        if (req.body.reason == 'verification') {
-
-        }
-        const amount = 299;
+        // Get amount from request or use default
+        const amount = req.body.amount || 299;
         const phone = req.body.phone;
         const account = req.session.user._id;
-        const { accountType } = req
+        const accountType = req.body.accountType || 'writer';
+        const reasonForPayment = req.body.reasonForPayment || 'registration';
+        const description = req.body.description || 'Account activation';
         const p = await pay(formatPhone(phone), amount, req.user.name);
         if (!p) {
             throw new Error('failed to initiate payment')
@@ -84,7 +84,9 @@ const initPay = async (req, res) => {
             status: mpesa.ResponseCode && mpesa.ResponseCode == 0 ? 'initiated' : 'failed',
             agent: 'mpesa',
             reference: mpesa.CheckoutRequestID,
-            accountType
+            accountType,
+            reasonForPayment,
+            description
         })
 
         await payment.save()

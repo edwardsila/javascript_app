@@ -30,7 +30,7 @@ const paymentSchema = new Schema({
   },
   reasonForPayment: {
     type: String,
-    enum: ['registration', 'job'],
+    enum: ['registration', 'job', 'token_purchase'],
     default: "registration"
   },
   status: {
@@ -61,7 +61,7 @@ paymentSchema.pre('save', async function (next) {
     }
     await newIncome(new Date().toDateString(), this.amount);
     this.summarized = true;
-    
+
     next();
   } catch (error) {
     next(error);

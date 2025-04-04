@@ -21,7 +21,7 @@
             <h2>Purchase Tokens</h2>
         </div>
     </nav>
-    
+
     <section>
         <div class="token-payment-summary">
             <h2>Payment Summary</h2>
@@ -44,7 +44,7 @@
                 </div>
             </div>
         </div>
-        
+
         <div class="make-pay">
             <form action="#" class="payment-acc">
                 <fieldset>
@@ -64,79 +64,105 @@
             </form>
         </div>
     </section>
-    
+
     <section class="hidden">
         <div class="complete-payment">
             <h1>If you have completed the payment.</h1>
             <button class="pay-complete">Click Here</button>
         </div>
     </section>
-    
+
     <div id="accountId" style="display: none;"><%= user._id %></div>
     <div id="accessKey" style="display: none;"><%= user.accessKey %></div>
     <div id="packageId" style="display: none;"><%= package.packageId %></div>
     <div id="tokenAmount" style="display: none;"><%= package.tokens %></div>
     <div id="reference" style="display: none;"><%= package.reference %></div>
-    
+
     <script>
         (()=>{
             const sections = document.querySelectorAll('section');
-            
+
             function step2() {
                 sections.forEach(e => {
                     e.classList.toggle('hidden');
                 });
             }
-            
-            document.forms[0].addEventListener('submit', (e)=>{
+
+            document.forms[0].addEventListener('submit', async (e)=>{
                 e.preventDefault();
                 const formData = new FormData(document.forms[0]);
-                
-                const myHeader = new Headers();
-                myHeader.append("user", document.getElementById('accountId').innerText);
-                myHeader.append("key", document.getElementById('accessKey').innerText);
-                
+
+                // Add token purchase information
                 formData.append("amount", <%= package.price %>);
                 formData.append("reference", document.getElementById('reference').innerText);
                 formData.append("description", "Token purchase: " + document.getElementById('packageId').innerText + " package");
                 formData.append("tokens", document.getElementById('tokenAmount').innerText);
-                
+                formData.append("reasonForPayment", "token_purchase");
+
+                // Add user authentication headers
+                const myHeader = new Headers();
+                myHeader.append("user", document.getElementById('accountId').innerText);
+                myHeader.append("key", document.getElementById('accessKey').innerText);
+
                 const requestOptions = {
                     method: "POST",
                     headers: myHeader,
                     body: formData,
                     redirect: "follow"
                 };
-                
-                document.forms[0].innerHTML = '<img src="../images/loader.svg" alt="" />';
-                fetch('/mpesa/start', requestOptions)
-                .then(response => {
-                    return response.json();
-                })
-                .then(result => {
+
+                try {
+                    document.forms[0].innerHTML = '<img src="../images/loader.svg" alt="" />';
+
+                    // Use the existing M-Pesa integration
+                    const response = await fetch('/mpesa/start', requestOptions);
+
+                    if (!response.ok) {
+                        const errorData = await response.json();
+                        throw new Error(errorData.error || 'Failed to process payment');
+                    }
+
+                    const result = await response.json();
+                    console.log('Payment initiated:', result);
                     localStorage.setItem("m-pesa", JSON.stringify(result));
                     step2();
-                })
-                .catch(e => {
-                    console.log(e);
-                });
-            });
-            
-            document.querySelector('.pay-complete').addEventListener('click', async (e) => {
-                const payId = JSON.parse(localStorage.getItem('m-pesa'))['payment']['_id'];
-                sections[1].innerHTML = '<img src="../images/loader.svg" alt="" />';
-                
-                const raw = await fetch('/mpesa/manualUpdate/' + payId);
-                const verification = await raw.json();
-                
-                if (raw.ok) {
-                    localStorage.setItem('token-purchase', JSON.stringify(verification));
-                    alert('Token purchase was successful!');
-                } else {
-                    alert(`An error occurred: ${verification.error || 'Failed to process payment'}\n\nYou will try again another time`);
+                } catch (error) {
+                    console.error('Error:', error);
+                    alert('Error: ' + error.message);
+                    location.href = '/token';
                 }
-                
-                location.href = '/token';
+            });
+
+            document.querySelector('.pay-complete').addEventListener('click', async (e) => {
+                try {
+                    const payId = JSON.parse(localStorage.getItem('m-pesa'))['payment']['_id'];
+                    sections[1].innerHTML = '<img src="../images/loader.svg" alt="" />';
+
+                    // Store token information in localStorage for the completion handler
+                    localStorage.setItem('token-info', JSON.stringify({
+                        tokens: parseInt(document.getElementById('tokenAmount').innerText),
+                        packageId: document.getElementById('packageId').innerText
+                    }));
+
+                    // Get token information from localStorage
+                    const tokenInfo = JSON.parse(localStorage.getItem('token-info'));
+                    const tokens = tokenInfo ? tokenInfo.tokens : 5;
+
+                    const response = await fetch(`/token/purchase/complete/${payId}?tokens=${tokens}`);
+                    const result = await response.json();
+
+                    if (response.ok) {
+                        localStorage.setItem('token-purchase', JSON.stringify(result));
+                        alert(`Token purchase was successful! You now have ${result.tokens} tokens.`);
+                    } else {
+                        throw new Error(result.error || 'Failed to process payment');
+                    }
+                } catch (error) {
+                    console.error('Error completing payment:', error);
+                    alert(`An error occurred: ${error.message}\n\nYou will try again another time`);
+                } finally {
+                    location.href = '/token';
+                }
             });
         })();
     </script>
