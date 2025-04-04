@@ -74,6 +74,12 @@
                 </span>
                 <span class="value"><%= job.expertiseLevel %></span>
             </div>
+            <div class="essential tokens">
+                <span class="key">
+                    <i class="fas fa-coins" title="Token cost to apply"></i>
+                </span>
+                <span class="value"><%= job.tokenCost || 1 %> token<%= (job.tokenCost > 1 || job.tokenCost === undefined) ? 's' : '' %></span>
+            </div>
         </div>
         <div class="keywords-container">
         <div class="keywords">
@@ -126,7 +132,7 @@
                 <div class="link"><a class="link-title">WorkHub Community</a></div>
                 <div class="link"><a href="/terms-conditions"> Terms of Service</a></div>
                 <div class="link"><a class="link-title" href="/contact">Feedback</a></div>
-    
+
             </div>
             <div class="link-container">
                 <div class="link">
@@ -135,7 +141,7 @@
                 <div class="link"><a href="/contact">Help and Support</a></div>
                 <div class="link"><a class="link-title">Trust & Safety</a></div>
                 <div class="link"><a class="link-title">Blog</a></div>
-    
+
             </div>
             <div class="link-container">
                 <div class="link">

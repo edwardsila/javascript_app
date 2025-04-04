@@ -10,10 +10,10 @@ const Login = require('../models/login');
 
 
 /**
- * 
- * @param {express.Request} req 
- * @param {express.Response} res 
- * @returns 
+ *
+ * @param {express.Request} req
+ * @param {express.Response} res
+ * @returns
  */
 async function create(req, res) {
     const account = req.body;
@@ -50,15 +50,27 @@ async function create(req, res) {
         // Generate a custom API key
         const accessKey = createHash({ length: 32, encoding: 36 });
 
-        let user = new Account({ name: account.name, email:account.email, phone: account.phone, password, accessKey, invitedBy: account.referral });
+        // Generate a unique referral code before saving
+        const tempId = createHash({ length: 10, encoding: 36 });
+        const referralCode = (new Date().valueOf() + parseInt(tempId, 16)).toString(36);
+
+        // Create the user with the referral code already set
+        let user = new Account({
+            name: account.name,
+            email: account.email,
+            phone: account.phone,
+            password,
+            accessKey,
+            invitedBy: account.referral,
+            referral: referralCode,
+            tokens: 5 // Give new users 5 free tokens to start
+        });
 
         const savedUser = await user.save();
         req.session.user = savedUser;
         res.status(201).redirect('/');
 
-       
-
-        const inviteCode  = account.referral;
+        const inviteCode = account.referral;
         const registration = new Registration({
             account: savedUser._id,
             session: req.session.id,
@@ -69,14 +81,8 @@ async function create(req, res) {
         });
 
         registration.save();
-
-        let id = savedUser._id.toString().slice(16);
-        id =(new Date().valueOf() + parseInt(id, 16)).toString(36);
-        
-        savedUser.referral = id;
-        savedUser.save();
         email.welcome(savedUser.name, savedUser.email, savedUser.referral);
-        
+
     } catch (error) {
         console.error(error);
         res.status(500).render("error", { message: "An error occurred", status: 500 });
@@ -361,9 +367,9 @@ const setReferral = async (req, res) => {
 }
 
 /**
- * 
- * @param {express.Request} req 
- * @param {express.Response} res 
+ *
+ * @param {express.Request} req
+ * @param {express.Response} res
  */
 async function findByReferralCode(req, res){
     const referralCode  = req.query.code || req.body.code;

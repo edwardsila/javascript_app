@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Purchase Tokens - WorkHub Writers</title>
+    <link rel="stylesheet" href="/styles/default.css">
+    <link rel="stylesheet" href="/styles/token.css">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+</head>
+<body>
+    <nav>
+        <div id="nav-brand">
+            <div onclick="location.href='/'">
+                <img src="/logo.svg" alt="" id="logo-image">
+            </div>
+        </div>
+    </nav>
+   
+    <section class="token-packages">
+        <h1>Purchase Tokens</h1>
+        <p class="token-info">Tokens are used to apply for jobs. Each job application requires at least 1 token.</p>
+        
+        <div class="token-balance">
+            <h3>Your Current Balance</h3>
+            <div class="balance"><%= user.tokens %> tokens</div>
+        </div>
+        
+        <div class="packages-container">
+            <div class="package" onclick="selectPackage('basic')">
+                <h3>Basic Package</h3>
+                <div class="token-amount">5 Tokens</div>
+                <div class="price">KSh 500</div>
+                <div class="package-details">
+                    <ul>
+                        <li>Apply for 5 jobs</li>
+                        <li>No expiration</li>
+                    </ul>
+                </div>
+                <button class="select-package" data-package="basic">Select</button>
+            </div>
+            
+            <div class="package" onclick="selectPackage('standard')">
+                <h3>Standard Package</h3>
+                <div class="token-amount">10 Tokens</div>
+                <div class="price">KSh 900</div>
+                <div class="package-details">
+                    <ul>
+                        <li>Apply for 10 jobs</li>
+                        <li>10% discount</li>
+                        <li>No expiration</li>
+                    </ul>
+                </div>
+                <button class="select-package" data-package="standard">Select</button>
+            </div>
+            
+            <div class="package" onclick="selectPackage('premium')">
+                <h3>Premium Package</h3>
+                <div class="token-amount">20 Tokens</div>
+                <div class="price">KSh 1600</div>
+                <div class="package-details">
+                    <ul>
+                        <li>Apply for 20 jobs</li>
+                        <li>20% discount</li>
+                        <li>No expiration</li>
+                    </ul>
+                </div>
+                <button class="select-package" data-package="premium">Select</button>
+            </div>
+        </div>
+        
+        <form id="purchase-form" action="/token/purchase" method="post">
+            <input type="hidden" name="packageId" id="packageId" value="">
+        </form>
+    </section>
+    
+    <footer>
+        <small>WorkHub Writers &copy; <span class="year"></span></small>
+    </footer>
+    
+    <script>
+        document.querySelector('.year').innerHTML = new Date().getFullYear();
+        
+        function selectPackage(packageId) {
+            document.getElementById('packageId').value = packageId;
+            document.getElementById('purchase-form').submit();
+        }
+        
+        // Add click event listeners to package buttons
+        document.querySelectorAll('.select-package').forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.stopPropagation();
+                selectPackage(e.target.dataset.package);
+            });
+        });
+    </script>
+</body>
+</html>

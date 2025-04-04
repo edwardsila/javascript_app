@@ -3,10 +3,12 @@ const router = express.Router();
 const Account = require('../models/account');
 const Proposal = require('../models/proposal');
 const Job = require('../models/job');
+const TokenTransaction = require('../models/tokenTransaction');
 const checkObjId = require('../utils/isCorrectObjectId');
-const activationRequired = require('../middleware/activationRequired')
+const tokenRequired = require('../middleware/tokenRequired');
+const { useTokensMiddleware, deductTokens } = require('../controllers/token');
 
-router.get('/send', activationRequired, async (req, res)=>{
+router.get('/send', useTokensMiddleware, async (req, res)=>{
     const jobId = req.query.id;
     if(!checkObjId(jobId)){
         return res.status(400).render('error', {message: 'Wrong Job Id', status: 400});
@@ -29,7 +31,7 @@ router.get('/send', activationRequired, async (req, res)=>{
     }
 })
 
-router.post('/', activationRequired, async (req, res)=>{
+router.post('/', useTokensMiddleware, async (req, res)=>{
     const {job, price, periodValue, periodUnit, coverLetter} = req.body;
     if(!checkObjId(job)){
         return res.status(400).render('error', {message: 'Wrong Job Id', status: 400});
@@ -43,11 +45,21 @@ router.post('/', activationRequired, async (req, res)=>{
         const proposer =  req.session.user._id;
         const estimatedTime = `${periodValue} ${periodUnit}`;
 
+        // Get token cost from middleware
+        const tokenCost = req.tokenCost || 1;
+
         const proposal = new Proposal({
-            proposer, estimatedTime, price, job, coverLetter
+            proposer, estimatedTime, price, job, coverLetter, tokensUsed: tokenCost
         });
 
         await proposal.save();
+
+        // Deduct tokens from user's account
+        const result = await deductTokens(proposer, job, proposal._id, tokenCost);
+
+        if (result.error) {
+            return res.status(result.status || 500).render('error', {message: result.error, status: result.status || 500});
+        }
 
         res.redirect('/proposal/sent?id='+proposal._id);
     } catch (error) {
@@ -56,7 +68,7 @@ router.post('/', activationRequired, async (req, res)=>{
     }
 })
 
-router.get('/sent', activationRequired, async (req, res)=>{
+router.get('/sent', tokenRequired(0), async (req, res)=>{
     const proposalId = req.query.id;
     if(!checkObjId(proposalId)){
         return res.status(400).render('error', {message: 'Wrong proposal Id', status: 400});

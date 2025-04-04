@@ -22,6 +22,7 @@ function router(app) {
     app.use('/payment', morgan, loginRequired, require('./routes/payment.js'))
     app.use('/training', morgan, require('./routes/training.js'));
     app.use('/paystack', morgan,  require("./routes/paystack.js"))
+    app.use('/token', morgan, require('./routes/token.js'))
 
     app.use('/mpesa', lipaNaMpesaRoutes);
 
@@ -63,9 +64,7 @@ function router(app) {
     app.get('/terms-conditions', morgan, (req, res) => {
         res.render('tandc')
     })
-    app.get('/pro-only', morgan, (req, res) => {
-        res.render('pro_only')
-    })
+    // Pro-only route now redirects to token page in the route below
     app.get('/signup', morgan, (req, res) => {
         const account = req.query.account;
         if (account === 'writer') {
@@ -96,7 +95,11 @@ function router(app) {
         res.render('login')
     })
     app.get('/activation', morgan, (req, res) => {
-        res.redirect('/payment')
+        res.redirect('/token')
+    })
+
+    app.get('/pro-only', morgan, (req, res) => {
+        res.redirect('/token')
     })
 
     app.use(morgan, (req, res) => {

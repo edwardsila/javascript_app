@@ -36,6 +36,11 @@ const jobProposalSchema = new Schema({
   summarized: {
     type: Boolean,
     default: false
+  },
+  tokensUsed: {
+    type: Number,
+    required: true,
+    default: 1
   }
 }, { timestamps: true });
 

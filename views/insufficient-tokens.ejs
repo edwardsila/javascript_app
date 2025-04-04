@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insufficient Tokens - WorkHub Writers</title>
+    <link rel="stylesheet" href="/styles/default.css">
+    <link rel="stylesheet" href="/styles/token.css">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+</head>
+<body>
+    <nav>
+        <div id="nav-brand">
+            <div onclick="location.href='/'">
+                <img src="/logo.svg" alt="" id="logo-image">
+            </div>
+        </div>
+    </nav>
+   
+    <section class="insufficient-tokens">
+        <h1>Insufficient Tokens</h1>
+        
+        <div class="token-alert">
+            <div class="alert-icon">
+                <i class="fas fa-exclamation-circle"></i>
+            </div>
+            <div class="alert-message">
+                <p>You need <strong><%= requiredTokens %> tokens</strong> to apply for this job, but you only have <strong><%= user.tokens %> tokens</strong>.</p>
+                <p>Purchase more tokens to continue with your application.</p>
+            </div>
+        </div>
+        
+        <div class="action-buttons">
+            <a href="/token" class="btn primary-btn">Purchase Tokens</a>
+            <a href="/job/id/<%= jobId %>" class="btn secondary-btn">Back to Job</a>
+        </div>
+        
+        <div class="token-info">
+            <h3>Why do I need tokens?</h3>
+            <p>Tokens are used to apply for jobs on WorkHub Writers. Each job application requires a specific number of tokens, typically based on the job's complexity and value.</p>
+            <p>Tokens help ensure that only serious applicants apply for jobs, improving the quality of proposals for clients.</p>
+        </div>
+    </section>
+    
+    <footer>
+        <small>WorkHub Writers &copy; <span class="year"></span></small>
+    </footer>
+    
+    <script>
+        document.querySelector('.year').innerHTML = new Date().getFullYear();
+    </script>
+</body>
+</html>

@@ -8,7 +8,7 @@ const searchSchema = new mongoose.Schema({
   },
   query: {
     type: String,
-    required: true,
+    default: '',
   },
   page: {
     type: Number,

@@ -51,6 +51,10 @@ const jobSchema = new Schema({
   summarized: {
     type: Boolean,
     default: false
+  },
+  tokenCost: {
+    type: Number,
+    default: 1
   }
 }, { timestamps: true });
 

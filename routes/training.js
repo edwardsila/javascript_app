@@ -1,9 +1,9 @@
 const express = require('express');
 
 const router = express.Router();
-const  verificationCheck = require('../middleware/activationRequired');
+const tokenRequired = require('../middleware/tokenRequired');
 
-router.use('/', verificationCheck, (req, res)=>{
+router.use('/', tokenRequired(1), (req, res)=>{
     res.redirect('/contact')
 })
 

@@ -32,8 +32,16 @@ router.get('/', async (req, res) => {
     }
 
     const searchData = {
-        query, page, url, sessionId, resultsCount, ipAddress, os, device, 
-        client, method: 'GET'
+        query: query || '', // Ensure query is never undefined
+        page,
+        url,
+        sessionId,
+        resultsCount,
+        ipAddress,
+        os,
+        device,
+        client,
+        method: 'GET'
     };
 
     if (user) {
@@ -59,8 +67,16 @@ router.post('/', async (req, res) => {
 
     const { os, device, client } = deviceInfo(agent);
     const searchData = {
-        query, page, url, sessionId, resultsCount, ipAddress, os, device, 
-        client, method: 'POST'
+        query: query || '', // Ensure query is never undefined
+        page,
+        url,
+        sessionId,
+        resultsCount,
+        ipAddress,
+        os,
+        device,
+        client,
+        method: 'POST'
     };
 
     if (user) {

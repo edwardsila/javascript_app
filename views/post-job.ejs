@@ -7,7 +7,7 @@
   </head>
   <body>
     <%- include('./fragments/account-check.ejs') %>
-    <%- include('./fragments/verificationCheck.ejs') %>
+    <%- include('./fragments/tokenCheck.ejs') %>
     <form id="post-job-form">
       <label for="job-title">Job Title:</label>
       <input type="text" id="job-title" name="job-title"><br><br>
@@ -147,6 +147,6 @@ function addSkill(skill) {
         <input type="text" id="skills-input">
         <ul id="skills-list"></ul>
       </div>
-      
+
   </body>
 </html>

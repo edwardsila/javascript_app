@@ -109,7 +109,8 @@ const accountSchema = new Schema({
   },
   referral: {
     type: String,
-    unique: true
+    unique: true,
+    sparse: true // This allows multiple documents to have null/undefined values
   },
   invitedBy: {
     type: String
@@ -117,6 +118,10 @@ const accountSchema = new Schema({
   summarized: {
     type: Boolean,
     default: false
+  },
+  tokens: {
+    type: Number,
+    default: 0
   }
 }, { timestamps: true });
 
