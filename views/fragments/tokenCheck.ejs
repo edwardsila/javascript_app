@@ -27,7 +27,7 @@
     }).then(res => {
         return res.json();
     }).then(user => {
-        if (!user || user.error || !user.tokens || user.tokens < 1) {
+        if (!user || user.error || !user.tokens || user.tokens < 1) { // Check if user has enough Word Coins
             location.href = '/token/insufficient';
         } else {
             document.getElementById('token-loader').style.display = 'none';
