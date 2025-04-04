@@ -25,13 +25,13 @@ const formatPhone = function (phoneNumber) {
 };
 
 /**
- * Initiate token purchase via M-Pesa
+ * Initiate Word Coins purchase via M-Pesa
  */
 const initTokenPurchase = async (req, res) => {
     try {
         // Get token package from session
         if (!req.session.tokenPackage) {
-            return res.status(400).json({ error: 'No token package selected' });
+            return res.status(400).json({ error: 'No Word Coins package selected' });
         }
 
         const { tokens, price, reference } = req.session.tokenPackage;
@@ -43,14 +43,14 @@ const initTokenPurchase = async (req, res) => {
 
         // Create a payment record directly
         const formattedPhone = formatPhone(phone);
-        console.log('Token purchase for phone:', formattedPhone, 'amount:', price);
+        console.log('Word Coins purchase for phone:', formattedPhone, 'amount:', price);
 
         // Create a unique reference for this payment
         const mpesaReference = reference || Date.now().toString();
 
         // For testing purposes, we'll skip the actual M-Pesa integration
         // and directly create a payment record
-        console.log(`Creating token purchase for account ${account}, amount ${price}, tokens ${tokens}`);
+        console.log(`Creating Word Coins purchase for account ${account}, amount ${price}, WC ${tokens}`);
 
         // Create payment record
         const payment = new Payment({
@@ -61,7 +61,7 @@ const initTokenPurchase = async (req, res) => {
             reference: mpesaReference,
             accountType: 'writer',
             reasonForPayment: 'token_purchase',
-            description: `Purchase of ${tokens} tokens`
+            description: `Purchase of ${tokens} Word Coins (WC)`
         });
 
         await payment.save();
@@ -81,7 +81,7 @@ const initTokenPurchase = async (req, res) => {
 };
 
 /**
- * Process token purchase after M-Pesa payment confirmation
+ * Process Word Coins purchase after M-Pesa payment confirmation
  */
 const processTokenPayment = async (req, res) => {
     try {
@@ -98,19 +98,19 @@ const processTokenPayment = async (req, res) => {
             return res.status(404).json({ error: 'Payment not found' });
         }
 
-        // Check if payment is for token purchase
+        // Check if payment is for Word Coins purchase
         if (payment.reasonForPayment !== 'token_purchase') {
-            return res.status(400).json({ error: 'This payment is not for token purchase' });
+            return res.status(400).json({ error: 'This payment is not for Word Coins purchase' });
         }
 
         // For testing purposes, automatically mark the payment as completed
         payment.status = 'completed';
         await payment.save();
 
-        // Get token package from query parameters or use default values
-        const tokens = parseInt(req.query.tokens) || 5; // Default to 5 tokens if not specified
+        // Get Word Coins package from query parameters or use default values
+        const tokens = parseInt(req.query.tokens) || 7; // Default to 7 WC if not specified
 
-        // For testing purposes, directly add tokens to the user's account
+        // For testing purposes, directly add Word Coins to the user's account
         const account = await Account.findById(payment.account);
         if (!account) {
             return res.status(404).json({ error: 'Account not found' });
@@ -121,13 +121,13 @@ const processTokenPayment = async (req, res) => {
             account: payment.account,
             amount: tokens,
             type: 'purchase',
-            description: `Purchased ${tokens} tokens`,
+            description: `Purchased ${tokens} Word Coins (WC)`,
             payment: payment._id
         });
 
         await tokenTransaction.save();
 
-        // Update account tokens
+        // Update account Word Coins
         account.tokens += tokens;
         await account.save();
 
@@ -145,7 +145,7 @@ const processTokenPayment = async (req, res) => {
 
         return res.json({
             success: true,
-            message: `Successfully purchased ${tokens} tokens`,
+            message: `Successfully purchased ${tokens} Word Coins (WC)`,
             tokens: account.tokens,
             payment: payment,
             transaction: tokenTransaction

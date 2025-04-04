@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Token Payment - WorkHub Writers</title>
+    <title>Word Coins Payment - WorkHub Writers</title>
     <link rel="stylesheet" href="/styles/default.css">
     <link rel="stylesheet" href="/styles/payment.css">
     <link rel="stylesheet" href="/styles/token.css">
@@ -18,7 +18,7 @@
     <nav>
         <div class="company-logo">
             <img src="/logo.svg" alt="" onclick="location.href='/'">
-            <h2>Purchase Tokens</h2>
+            <h2>Purchase Word Coins</h2>
         </div>
     </nav>
 
@@ -31,8 +31,8 @@
                     <span class="value"><%= package.packageId.charAt(0).toUpperCase() + package.packageId.slice(1) %> Package</span>
                 </div>
                 <div class="detail">
-                    <span class="label">Tokens:</span>
-                    <span class="value"><%= package.tokens %> tokens</span>
+                    <span class="label">Word Coins:</span>
+                    <span class="value"><%= package.tokens %> WC</span>
                 </div>
                 <div class="detail">
                     <span class="label">Amount:</span>
@@ -60,7 +60,7 @@
                 </fieldset>
                 <div><i class="fa-solid fa-circle-info"></i> The amount to pay is KSh. <%= package.price %></div>
                 <p>Not ready to complete your payment now?</p>
-                <p>Continue to <a href="/token">token packages</a> or <a href="/jobs">browse jobs</a></p>
+                <p>Continue to <a href="/token">Word Coins packages</a> or <a href="/jobs">browse jobs</a></p>
             </form>
         </div>
     </section>
@@ -95,7 +95,7 @@
                 // Add token purchase information
                 formData.append("amount", <%= package.price %>);
                 formData.append("reference", document.getElementById('reference').innerText);
-                formData.append("description", "Token purchase: " + document.getElementById('packageId').innerText + " package");
+                formData.append("description", "Word Coins purchase: " + document.getElementById('packageId').innerText + " package");
                 formData.append("tokens", document.getElementById('tokenAmount').innerText);
                 formData.append("reasonForPayment", "token_purchase");
 
@@ -153,7 +153,7 @@
 
                     if (response.ok) {
                         localStorage.setItem('token-purchase', JSON.stringify(result));
-                        alert(`Token purchase was successful! You now have ${result.tokens} tokens.`);
+                        alert(`Word Coins purchase was successful! You now have ${result.tokens} WC.`);
                     } else {
                         throw new Error(result.error || 'Failed to process payment');
                     }

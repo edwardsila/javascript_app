@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Purchase Tokens - WorkHub Writers</title>
+    <title>Purchase Word Coins - WorkHub Writers</title>
     <link rel="stylesheet" href="/styles/default.css">
     <link rel="stylesheet" href="/styles/token.css">
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
@@ -21,76 +21,76 @@
             </div>
         </div>
     </nav>
-   
+
     <section class="token-packages">
-        <h1>Purchase Tokens</h1>
-        <p class="token-info">Tokens are used to apply for jobs. Each job application requires at least 1 token.</p>
-        
+        <h1>Purchase Word Coins</h1>
+        <p class="token-info">Word Coins (WC) are used to apply for jobs. Each job application requires at least 1 Word Coin.</p>
+
         <div class="token-balance">
             <h3>Your Current Balance</h3>
-            <div class="balance"><%= user.tokens %> tokens</div>
+            <div class="balance"><%= user.tokens %> WC</div>
         </div>
-        
+
         <div class="packages-container">
-            <div class="package" onclick="selectPackage('basic')">
-                <h3>Basic Package</h3>
-                <div class="token-amount">5 Tokens</div>
-                <div class="price">KSh 500</div>
+            <div class="package" onclick="selectPackage('starter')">
+                <h3>STARTER</h3>
+                <div class="token-amount">7 WC</div>
+                <div class="price">KSh 750</div>
                 <div class="package-details">
                     <ul>
-                        <li>Apply for 5 jobs</li>
+                        <li>Apply for 7 jobs</li>
                         <li>No expiration</li>
                     </ul>
                 </div>
-                <button class="select-package" data-package="basic">Select</button>
+                <button class="select-package" data-package="starter">Select</button>
             </div>
-            
-            <div class="package" onclick="selectPackage('standard')">
-                <h3>Standard Package</h3>
-                <div class="token-amount">10 Tokens</div>
-                <div class="price">KSh 900</div>
+
+            <div class="package" onclick="selectPackage('most_popular')">
+                <h3>MOST POPULAR</h3>
+                <div class="token-amount">15 WC</div>
+                <div class="price">KSh 1250</div>
                 <div class="package-details">
                     <ul>
-                        <li>Apply for 10 jobs</li>
-                        <li>10% discount</li>
+                        <li>Apply for 15 jobs</li>
+                        <li>16% discount</li>
                         <li>No expiration</li>
                     </ul>
                 </div>
-                <button class="select-package" data-package="standard">Select</button>
+                <button class="select-package" data-package="most_popular">Select</button>
             </div>
-            
-            <div class="package" onclick="selectPackage('premium')">
-                <h3>Premium Package</h3>
-                <div class="token-amount">20 Tokens</div>
-                <div class="price">KSh 1600</div>
+
+            <div class="package" onclick="selectPackage('freelancer_active')">
+                <h3>FREELANCER ACTIVE</h3>
+                <div class="token-amount">30 WC</div>
+                <div class="price">KSh 2000</div>
                 <div class="package-details">
                     <ul>
-                        <li>Apply for 20 jobs</li>
-                        <li>20% discount</li>
+                        <li>Apply for 30 jobs</li>
+                        <li>25% discount</li>
                         <li>No expiration</li>
                     </ul>
                 </div>
-                <button class="select-package" data-package="premium">Select</button>
+                <button class="select-package" data-package="freelancer_active">Select</button>
             </div>
         </div>
-        
+
         <form id="purchase-form" action="/token/purchase" method="post">
             <input type="hidden" name="packageId" id="packageId" value="">
         </form>
     </section>
-    
+
     <footer>
         <small>WorkHub Writers &copy; <span class="year"></span></small>
     </footer>
-    
+
     <script>
         document.querySelector('.year').innerHTML = new Date().getFullYear();
-        
+
         function selectPackage(packageId) {
             document.getElementById('packageId').value = packageId;
             document.getElementById('purchase-form').submit();
         }
-        
+
         // Add click event listeners to package buttons
         document.querySelectorAll('.select-package').forEach(button => {
             button.addEventListener('click', (e) => {

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Insufficient Tokens - WorkHub Writers</title>
+    <title>Insufficient Word Coins - WorkHub Writers</title>
     <link rel="stylesheet" href="/styles/default.css">
     <link rel="stylesheet" href="/styles/token.css">
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
@@ -21,36 +21,36 @@
             </div>
         </div>
     </nav>
-   
+
     <section class="insufficient-tokens">
-        <h1>Insufficient Tokens</h1>
-        
+        <h1>Insufficient Word Coins</h1>
+
         <div class="token-alert">
             <div class="alert-icon">
                 <i class="fas fa-exclamation-circle"></i>
             </div>
             <div class="alert-message">
-                <p>You need <strong><%= requiredTokens %> tokens</strong> to apply for this job, but you only have <strong><%= user.tokens %> tokens</strong>.</p>
-                <p>Purchase more tokens to continue with your application.</p>
+                <p>You need <strong><%= requiredTokens %> Word Coins (WC)</strong> to apply for this job, but you only have <strong><%= user.tokens %> WC</strong>.</p>
+                <p>Purchase more Word Coins to continue with your application.</p>
             </div>
         </div>
-        
+
         <div class="action-buttons">
-            <a href="/token" class="btn primary-btn">Purchase Tokens</a>
+            <a href="/token" class="btn primary-btn">Purchase Word Coins</a>
             <a href="/job/id/<%= jobId %>" class="btn secondary-btn">Back to Job</a>
         </div>
-        
+
         <div class="token-info">
-            <h3>Why do I need tokens?</h3>
-            <p>Tokens are used to apply for jobs on WorkHub Writers. Each job application requires a specific number of tokens, typically based on the job's complexity and value.</p>
-            <p>Tokens help ensure that only serious applicants apply for jobs, improving the quality of proposals for clients.</p>
+            <h3>Why do I need Word Coins?</h3>
+            <p>Word Coins (WC) are used to apply for jobs on WorkHub Writers. Each job application requires a specific number of Word Coins, typically based on the job's complexity and value.</p>
+            <p>Word Coins help ensure that only serious applicants apply for jobs, improving the quality of proposals for clients.</p>
         </div>
     </section>
-    
+
     <footer>
         <small>WorkHub Writers &copy; <span class="year"></span></small>
     </footer>
-    
+
     <script>
         document.querySelector('.year').innerHTML = new Date().getFullYear();
     </script>

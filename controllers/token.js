@@ -6,8 +6,8 @@ const createHash = require('../utils/createHash');
 
 /**
  * Purchase tokens for an account
- * @param {express.Request} req 
- * @param {express.Response} res 
+ * @param {express.Request} req
+ * @param {express.Response} res
  */
 async function purchaseTokens(req, res) {
     if (!req.session.user) {
@@ -15,12 +15,12 @@ async function purchaseTokens(req, res) {
     }
 
     const { packageId } = req.body;
-    
-    // Define token packages
+
+    // Define Word Coins packages
     const tokenPackages = {
-        'basic': { tokens: 5, price: 500 },
-        'standard': { tokens: 10, price: 900 },
-        'premium': { tokens: 20, price: 1600 }
+        'starter': { tokens: 7, price: 750 },
+        'most_popular': { tokens: 15, price: 1250 },
+        'freelancer_active': { tokens: 30, price: 2000 }
     };
 
     // Validate package
@@ -29,11 +29,11 @@ async function purchaseTokens(req, res) {
     }
 
     const selectedPackage = tokenPackages[packageId];
-    
+
     try {
         // Create a reference for the payment
         const reference = createHash({ length: 10, encoding: 36 });
-        
+
         // Store the package info in the session for the payment process
         req.session.tokenPackage = {
             packageId,
@@ -41,7 +41,7 @@ async function purchaseTokens(req, res) {
             price: selectedPackage.price,
             reference
         };
-        
+
         // Redirect to payment page
         res.redirect('/token/payment');
     } catch (error) {
@@ -75,7 +75,7 @@ async function processTokenPurchase(accountId, paymentData, tokens) {
             reasonForPayment: 'token_purchase',
             status: 'completed',
             reference: paymentData.reference,
-            description: `Purchase of ${tokens} tokens`,
+            description: `Purchase of ${tokens} Word Coins (WC)`,
             etc: paymentData.etc || {}
         });
 
@@ -86,7 +86,7 @@ async function processTokenPurchase(accountId, paymentData, tokens) {
             account: accountId,
             amount: tokens,
             type: 'purchase',
-            description: `Purchased ${tokens} tokens`,
+            description: `Purchased ${tokens} Word Coins (WC)`,
             payment: payment._id
         });
 
@@ -96,11 +96,11 @@ async function processTokenPurchase(accountId, paymentData, tokens) {
         account.tokens += tokens;
         await account.save();
 
-        return { 
-            success: true, 
-            account, 
-            payment, 
-            tokenTransaction 
+        return {
+            success: true,
+            account,
+            payment,
+            tokenTransaction
         };
     } catch (error) {
         console.error('Error processing token purchase:', error);
@@ -110,9 +110,9 @@ async function processTokenPurchase(accountId, paymentData, tokens) {
 
 /**
  * Use tokens to apply for a job
- * @param {express.Request} req 
- * @param {express.Response} res 
- * @param {Function} next 
+ * @param {express.Request} req
+ * @param {express.Response} res
+ * @param {Function} next
  */
 async function useTokensMiddleware(req, res, next) {
     if (!req.session.user) {
@@ -180,7 +180,7 @@ async function deductTokens(accountId, jobId, proposalId, tokenCost) {
             account: accountId,
             amount: -tokenCost, // Negative amount for usage
             type: 'usage',
-            description: `Used ${tokenCost} tokens to apply for a job`,
+            description: `Used ${tokenCost} Word Coins (WC) to apply for a job`,
             job: jobId,
             proposal: proposalId
         });
@@ -191,10 +191,10 @@ async function deductTokens(accountId, jobId, proposalId, tokenCost) {
         account.tokens -= tokenCost;
         await account.save();
 
-        return { 
-            success: true, 
-            account, 
-            tokenTransaction 
+        return {
+            success: true,
+            account,
+            tokenTransaction
         };
     } catch (error) {
         console.error('Error deducting tokens:', error);
@@ -204,8 +204,8 @@ async function deductTokens(accountId, jobId, proposalId, tokenCost) {
 
 /**
  * Get token transaction history for an account
- * @param {express.Request} req 
- * @param {express.Response} res 
+ * @param {express.Request} req
+ * @param {express.Response} res
  */
 async function getTokenHistory(req, res) {
     if (!req.session.user) {
